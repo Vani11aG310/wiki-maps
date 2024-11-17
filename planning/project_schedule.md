@@ -2,8 +2,8 @@
 
 ## Sunday
 - ~~User Stories~~ (Completed)
-- ERD
-- Routes (Plan)
+- ~~ERD~~ (Completed)
+- ~~Routes~~ (Completed)
 - Wireframe
 - Practice Git workflow
 - DDL for tables
