@@ -1,10 +1,11 @@
 # Project Schedule
 
 ## Sunday
-- User Stories
+- User Stories (Completed)
 - ERD
 - Routes (Plan)
 - Wireframe
+- Practice Git workflow
 - DDL for tables
 - Seed tables
 
