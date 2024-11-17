@@ -1,7 +1,7 @@
 # Project Schedule
 
 ## Sunday
-- User Stories (Completed)
+- ~~User Stories~~ (Completed)
 - ERD
 - Routes (Plan)
 - Wireframe
