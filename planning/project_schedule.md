@@ -4,7 +4,7 @@
 - ~~User Stories~~ (Completed)
 - ~~ERD~~ (Completed)
 - ~~Routes~~ (Completed)
-- Wireframe
+- ~~Wireframe~~ (Completed)
 - Practice Git workflow
 - DDL for tables
 - Seed tables
