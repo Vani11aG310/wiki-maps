@@ -16,4 +16,7 @@ DELETE:         DELETE /maps/:id
 * UPDATE:   POST /users/:id
 * DELETE? : DELETE /users/:id
 
-## 
+## Marker/places/destination routes
+
+* CREATE: POST /markers
+* READ: 
