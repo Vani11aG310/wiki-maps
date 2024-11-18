@@ -1,8 +1,7 @@
 /*
- * All routes for User Data are defined here
+ * All routes for User Data are defined here.
  * Since this file is loaded in server.js into api/users,
- *   these routes are mounted onto /api/users
- * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
+ * these routes are mounted onto /api/users
  */
 
 const express = require('express');
@@ -35,9 +34,25 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const newUser = req.body;
+  const user = req.body;
 
-  userQueries.addUser(newUser)
+  userQueries.addUser(user)
+    .then(user => {
+      res.json({ user });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
+router.post('/:id', (req, res) => {
+  const user = req.body;
+  user.id = req.params.id
+
+  console.log("in the post", user);
+  userQueries.updateUser(user)
     .then(user => {
       res.json({ user });
     })
