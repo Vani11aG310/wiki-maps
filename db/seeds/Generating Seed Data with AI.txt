@@ -1,0 +1,27 @@
+Please create an insert query that will insert 30 maps using the following shape.
+
+userid_id is a number between 1 an 3.
+title is the name of the map.  The map name is a list of a favourite places, restaurants, or things to do in a Canadian city.
+description is short description of the map.  It should not exceed 50 characters.
+photo_url is a link to https://picsum.photos/id/<id>/1024/768'. Replace <id> with a sequence number starting at 1.
+
+INSERT INTO maps 
+(user_id, title, description, photo_url) 
+VALUES
+(1, 'Victoria Landmarks', 'Favorite spots in Victoria.', 'https://picsum.photos/id/1/200/300');
+
+
+Now, based on the previous query, I need to add 4 places to each map using the following shape.
+map_id is the row number from the previous query.
+title is the name of the place, landmark, or 
+latitude and longitude for the geo location of the place
+description is description of the place.  It should not exceed 100 characters.
+photo_url is a link to https://picsum.photos/id/<id>/1024/768'. Replace <id> with a sequence number starting at 101.
+
+INSERT INTO places
+(map_id, title, latitude, longitude, description, photo_url)
+VALUES
+(1, 'Terry Fox Statue', 48.409678184982575, -123.36896467287193, 'The Terry Fox statue is a bronze sculpture that was installed in the park in 2000 near the Mile Zero monument.', 'https://picsum.photos/id/101/1024/768');
+
+
+

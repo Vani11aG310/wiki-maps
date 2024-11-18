@@ -7,12 +7,13 @@
 - ~~Wireframe~~ (Completed)
 - ~~Practice Git workflow~~ (Completed)
 - ~~DDL for tables~~ (Completed)
-- Seed tables
+- ~~Seed tables~~ (Completed)
 
 ## Monday
-- Queries & Help Functions
+- Queries & Helper Functions
 - Routes (Build)
-- POC for Map
+- POC for Map (Leaflet vs Google)
+- POC for App layout (beyond wireframe)
 
 ## Tuesday
 - Build App
