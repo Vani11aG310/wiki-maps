@@ -20,6 +20,20 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/:id/maps', (req, res) => {
+  const userId = req.params.id;
+console.log(userId);
+  userQueries.getMapsByUser(userId)
+    .then(maps => {
+      res.json({ maps });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
 router.get('/:id', (req, res) => {
   const userId = req.params.id;
 
@@ -33,6 +47,7 @@ router.get('/:id', (req, res) => {
         .json({ error: err.message });
     });
 });
+
 
 router.post('/', (req, res) => {
   const user = req.body;
