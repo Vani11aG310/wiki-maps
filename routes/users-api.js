@@ -22,6 +22,7 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   const userId = req.params.id;
+
   userQueries.getUserById(userId)
     .then(user => {
       res.json({ user });
@@ -47,11 +48,24 @@ router.post('/', (req, res) => {
     });
 });
 
+router.post('/:id/delete', (req, res) => {
+  const userId = req.params.id;
+
+  userQueries.deleteUser(userId)
+    .then(user => {
+      res.json({ user });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
 router.post('/:id', (req, res) => {
   const user = req.body;
   user.id = req.params.id
 
-  console.log("in the post", user);
   userQueries.updateUser(user)
     .then(user => {
       res.json({ user });
