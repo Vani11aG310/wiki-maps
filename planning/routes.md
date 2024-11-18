@@ -7,6 +7,7 @@
 * (Single User) ~~GET  /api/users/:id~~ (Completed)
 * UPDATE:       ~~POST /api/users/:id~~ (Completed)
 * DELETE:       ~~POST /api/users/:id/delete~~ (Completed)
+* Maps for a User ~~GET  /api/users/:id/maps~~ (Completed)
 
 ## Map routes
 
