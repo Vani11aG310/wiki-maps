@@ -24,8 +24,30 @@ const getUserById = (id) => {
     });
 };
 
+const addUser = function (user) {
+  const queryString = `
+  INSERT INTO users
+  (name, email, password)
+  VALUES 
+  ($1, $2, $3)
+  RETURNING *;
+  `;
+
+  const queryParms = [user.name, user.email, user.password];
+
+  return db.query(queryString, queryParms)
+  .then((result) => {
+    return result.rows[0];
+  })
+  .catch((err) => {
+    return err.message;
+  });
+
+};
+
 module.exports = {
   getUsers,
-  getUserById
+  getUserById,
+  addUser,
 };
 
