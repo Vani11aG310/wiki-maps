@@ -1,6 +1,34 @@
-INSERT INTO maps 
-(user_id, title, description, photo_url) 
+INSERT INTO maps (user_id, title, description, photo_url) 
 VALUES
-(1, 'Victoria Landmarks', 'These are may favourite places in Victoria.', 'https://images.pexels.com/photos/259957/pexels-photo-259957.jpeg'),
-(2, 'Vancouver Landmarks', 'These are may favourite places in Vancouver.', 'https://images.pexels.com/photos/1501272/pexels-photo-1501272.jpeg'),
-(3, 'Calgary Landmarks', 'These are may favourite places in Calgary.', 'https://images.pexels.com/photos/1932266/pexels-photo-1932266.jpeg')
+(1, 'Victoria Landmarks', 'Favorite spots in Victoria.', 'https://picsum.photos/id/1/1024/768'),
+(2, 'Toronto Eats', 'Top restaurants in Toronto.', 'https://picsum.photos/id/2/1024/768'),
+(3, 'Vancouver Views', 'Scenic spots in Vancouver.', 'https://picsum.photos/id/3/1024/768'),
+(1, 'Calgary Attractions', 'Must-see places in Calgary.', 'https://picsum.photos/id/4/1024/768'),
+(2, 'Montreal Culture', 'Cultural spots in Montreal.', 'https://picsum.photos/id/5/1024/768'),
+(3, 'Ottawa Sights', 'Historic sites in Ottawa.', 'https://picsum.photos/id/6/1024/768'),
+(1, 'Halifax Harbor', 'Beautiful views in Halifax.', 'https://picsum.photos/id/7/1024/768'),
+(2, 'Quebec City Charm', 'Charming spots in Quebec City.', 'https://picsum.photos/id/8/1024/768'),
+(3, 'Winnipeg Wonders', 'Unique places in Winnipeg.', 'https://picsum.photos/id/9/1024/768'),
+(1, 'St. John''s Coast', 'Coastal views in St. John''s.', 'https://picsum.photos/id/10/1024/768'),
+(2, 'Regina Parks', 'Best parks in Regina.', 'https://picsum.photos/id/11/1024/768'),
+(3, 'Saskatoon River', 'River views in Saskatoon.', 'https://picsum.photos/id/12/1024/768'),
+(1, 'Nanaimo Nature', 'Nature spots in Nanaimo.', 'https://picsum.photos/id/13/1024/768'),
+(2, 'London Ontario', 'Attractions in London, ON.', 'https://picsum.photos/id/14/1024/768'),
+(3, 'Kelowna Wineries', 'Top wineries in Kelowna.', 'https://picsum.photos/id/15/1024/768'),
+(1, 'Charlottetown History', 'Historic sites in Charlottetown.', 'https://picsum.photos/id/16/1024/768'),
+(2, 'Thunder Bay Trails', 'Best trails in Thunder Bay.', 'https://picsum.photos/id/17/1024/768'),
+(3, 'Lethbridge Landmarks', 'Landmarks in Lethbridge.', 'https://picsum.photos/id/18/1024/768'),
+(1, 'Kamloops Adventures', 'Outdoor adventures in Kamloops.', 'https://picsum.photos/id/19/1024/768'),
+(2, 'Oshawa Attractions', 'Attractions in Oshawa.', 'https://picsum.photos/id/20/1024/768'),
+(3, 'Barrie Beaches', 'Beaches in Barrie.', 'https://picsum.photos/id/21/1024/768'),
+(1, 'Fredericton Parks', 'Parks in Fredericton.', 'https://picsum.photos/id/22/1024/768'),
+(2, 'Guelph Gardens', 'Beautiful gardens in Guelph.', 'https://picsum.photos/id/23/1024/768'),
+(3, 'Sarnia Waterfront', 'Waterfront views in Sarnia.', 'https://picsum.photos/id/24/1024/768'),
+(1, 'Medicine Hat History', 'Historical sites in Medicine Hat.', 'https://picsum.photos/id/25/1024/768'),
+(2, 'Prince George Nature', 'Nature spots in Prince George.', 'https://picsum.photos/id/26/1024/768'),
+(3, 'Chilliwack Farms', 'Farms in Chilliwack.', 'https://picsum.photos/id/27/1024/768'),
+(1, 'Burlington Parks', 'Parks in Burlington.', 'https://picsum.photos/id/28/1024/768'),
+(2, 'St. Catharines Views', 'Scenic views in St. Catharines.', 'https://picsum.photos/id/29/1024/768'),
+(3, 'Cornwall Attractions', 'Attractions in Cornwall.', 'https://picsum.photos/id/30/1024/768');
+
+
