@@ -2,7 +2,7 @@
 INSERT INTO users 
 (name, password, email) 
 VALUES 
-('Mike', 'password', 'mike@example.com'),
-('Angelo', 'password', 'angelo@example.com'),
-('Rod', 'password', 'rod@example.com');
+('Mike', 'mike@example.com', 'password'),
+('Angelo', 'angelo@example.com', 'password'),
+('Rod', 'rod@example.com', 'password');
 
