@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS places CASCADE;
+CREATE TABLE places (
+  id SERIAL PRIMARY KEY NOT NULL,
+  map_id INTEGER NOT NULL REFERENCES maps(id) ON DELETE CASCADE,
+  title VARCHAR(255) NOT NULL,
+  photo_url VARCHAR(255),
+  latitude FLOAT NOT NULL,
+  longitude FLOAT NOT NULL,
+  description TEXT
+);

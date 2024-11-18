@@ -5,8 +5,8 @@
 - ~~ERD~~ (Completed)
 - ~~Routes~~ (Completed)
 - ~~Wireframe~~ (Completed)
-- Practice Git workflow
-- DDL for tables
+- ~~Practice Git workflow~~ (Completed)
+- ~~DDL for tables~~ (Completed)
 - Seed tables
 
 ## Monday
