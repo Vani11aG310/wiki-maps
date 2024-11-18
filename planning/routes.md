@@ -2,19 +2,19 @@
 
 ## User routes
 
-* CREATE:       POST /api/users
-* READ:         GET  /api/users
-* (Single User) GET  /api/users/:id
-* UPDATE:       POST /api/users/:id
-* DELETE:       POST /api/users/:id/delete (Stretch goal, Out of scope)
+* CREATE:       ~~POST /api/users~~ (Completed)
+* READ:         ~~GET  /api/users~~ (Completed)
+* (Single User) ~~GET  /api/users/:id~~ (Completed)
+* UPDATE:       ~~POST /api/users/:id~~ (Completed)
+* DELETE:       ~~POST /api/users/:id/delete~~ (Completed)
 
 ## Map routes
 
-* CREATE:      POST /api/maps 
-* READ:        GET  /api/maps
-* (Single Map) GET  /api/maps/:id
+* CREATE:      POST /api/maps
+* READ:        ~~GET  /api/maps~~ (Completed)
+* (Single Map) ~~GET  /api/maps/:id~~ (Completed)
 * UPDATE:      POST /api/maps/:id
-* DELETE:      POST /api/maps/:id/delete (Stretch goal, Out of scope)
+* DELETE:      POST /api/maps/:id/delete
 
 ## Favourite maps routes Option 1
 
