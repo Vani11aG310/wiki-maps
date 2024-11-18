@@ -4,7 +4,7 @@ const getUsers = () => {
   const queryString = `
     SELECT * 
     FROM users
-    ORDER by name;`;
+    ORDER by lower(name);`;
 
   return db.query(queryString)
     .then(data => {
@@ -17,6 +17,7 @@ const getUserById = (id) => {
     SELECT * 
     FROM users 
     WHERE id = $1;`;
+
   const queryParams = [id];
 
   return db.query(queryString, queryParams)
@@ -34,9 +35,9 @@ const addUser = (user) => {
   RETURNING *;
   `;
 
-  const queryParms = [user.name, user.email, user.password];
+  const queryParams = [user.name, user.email, user.password];
 
-  return db.query(queryString, queryParms)
+  return db.query(queryString, queryParams)
     .then((result) => {
       return result.rows[0];
     })
@@ -55,9 +56,28 @@ const updateUser = (user) => {
   RETURNING *;
   `;
 
-  const queryParms = [user.id, user.name, user.email, user.password];
+  const queryParams = [user.id, user.name, user.email, user.password];
 
-  return db.query(queryString, queryParms)
+  return db.query(queryString, queryParams)
+    .then((result) => {
+      return result.rows[0];
+    })
+    .catch((err) => {
+      return err.message;
+    });
+};
+
+const deleteUser = (id) => {
+  const queryString = `
+  DELETE 
+  FROM users
+  WHERE id = $1
+  RETURNING *;
+  `;
+
+  const queryParams = [id];
+
+  return db.query(queryString, queryParams)
     .then((result) => {
       return result.rows[0];
     })
@@ -71,5 +91,6 @@ module.exports = {
   getUserById,
   addUser,
   updateUser,
+  deleteUser,
 };
 

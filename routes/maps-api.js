@@ -1,17 +1,17 @@
 /*
- * All routes for User Data are defined here.
- * Since this file is loaded in server.js into api/users,
- * these routes are mounted onto /api/users
+ * All routes for Map Data are defined here.
+ * Since this file is loaded in server.js into api/maps,
+ * these routes are mounted onto /api/maps
  */
 
 const express = require('express');
 const router  = express.Router();
-const userQueries = require('../db/queries/users');
+const mapQueries = require('../db/queries/maps');
 
 router.get('/', (req, res) => {
-  userQueries.getUsers()
-    .then(users => {
-      res.json({ users });
+  mapQueries.getMaps()
+    .then(maps => {
+      res.json({ maps });
     })
     .catch(err => {
       res
@@ -21,11 +21,11 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  const userId = req.params.id;
+  const mapId = req.params.id;
 
-  userQueries.getUserById(userId)
-    .then(user => {
-      res.json({ user });
+mapQueries.getMapById(mapId)
+.then(map => {
+      res.json({ map });
     })
     .catch(err => {
       res
@@ -35,11 +35,11 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const user = req.body;
+  const map = req.body;
 
-  userQueries.addUser(user)
-    .then(user => {
-      res.json({ user });
+  mapQueries.addMap(map)
+    .then(map => {
+      res.json({ map });
     })
     .catch(err => {
       res
@@ -49,11 +49,11 @@ router.post('/', (req, res) => {
 });
 
 router.post('/:id/delete', (req, res) => {
-  const userId = req.params.id;
+  const mapId = req.params.id;
 
-  userQueries.deleteUser(userId)
-    .then(user => {
-      res.json({ user });
+  mapQueries.deleteMap(mapId)
+    .then(map => {
+      res.json({ map });
     })
     .catch(err => {
       res
@@ -63,12 +63,12 @@ router.post('/:id/delete', (req, res) => {
 });
 
 router.post('/:id', (req, res) => {
-  const user = req.body;
-  user.id = req.params.id
+  const map = req.body;
+  map.id = req.params.id
 
-  userQueries.updateUser(user)
-    .then(user => {
-      res.json({ user });
+  mapQueries.updateMap(map)
+    .then(map => {
+      res.json({ map });
     })
     .catch(err => {
       res
