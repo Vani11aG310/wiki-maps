@@ -5,6 +5,6 @@ CREATE TABLE places (
   title VARCHAR(255) NOT NULL,
   latitude FLOAT NOT NULL,
   longitude FLOAT NOT NULL,
-  photo_url VARCHAR(255),
-  description TEXT
+  description TEXT,
+  photo_url VARCHAR(255)
 );
