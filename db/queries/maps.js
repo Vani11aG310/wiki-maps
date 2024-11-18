@@ -41,71 +41,72 @@ const getMapById = (id) => {
     });
 };
 
-// const addUser = (user) => {
-//   const queryString = `
-//   INSERT INTO users
-//   (name, email, password)
-//   VALUES 
-//   ($1, $2, $3)
-//   RETURNING *;
-//   `;
+const addMap = (map) => {
+  const queryString = `
+  INSERT INTO maps
+  (user_id, title, description, photo_url)
+  VALUES 
+  ($1, $2, $3, $4)
+  RETURNING *;
+  `;
 
-//   const queryParams = [user.name, user.email, user.password];
+  const queryParams = [map.user_id, map.title, map.description, map.photo_url];
 
-//   return db.query(queryString, queryParams)
-//     .then((result) => {
-//       return result.rows[0];
-//     })
-//     .catch((err) => {
-//       return err.message;
-//     });
-// };
+  return db.query(queryString, queryParams)
+    .then((result) => {
+      return result.rows[0];
+    })
+    .catch((err) => {
+      return err.message;
+    });
+};
 
-// const updateUser = (user) => {
-//   const queryString = `
-//   UPDATE users
-//   SET name = $2, 
-//   email = $3,
-//   password = $4
-//   WHERE id = $1
-//   RETURNING *;
-//   `;
+const updateMap = (map) => {
+  const queryString = `
+  UPDATE maps
+  SET user_id = $2,
+  title = $3,
+  description = $4,
+  photo_url = $5
+  WHERE id = $1
+  RETURNING *;
+  `;
 
-//   const queryParams = [user.id, user.name, user.email, user.password];
+  const queryParams = [map.id, map.user_id, map.title, map.description, map.photo_url];
 
-//   return db.query(queryString, queryParams)
-//     .then((result) => {
-//       return result.rows[0];
-//     })
-//     .catch((err) => {
-//       return err.message;
-//     });
-// };
+  return db.query(queryString, queryParams)
+    .then((result) => {
+      return result.rows[0];
+    })
+    .catch((err) => {
+      return err.message;
+    });
+};
 
-// const deleteUser = (id) => {
-//   const queryString = `
-//   DELETE 
-//   FROM users
-//   WHERE id = $1
-//   RETURNING *;
-//   `;
+const deleteMap = (id) => {
+  const queryString = `
+  DELETE 
+  FROM maps
+  WHERE id = $1
+  RETURNING *;
+  `;
 
-//   const queryParams = [id];
+  const queryParams = [id];
 
-//   return db.query(queryString, queryParams)
-//     .then((result) => {
-//       return result.rows[0];
-//     })
-//     .catch((err) => {
-//       return err.message;
-//     });
-// };
+  return db.query(queryString, queryParams)
+    .then((result) => {
+      return result.rows[0];
+    })
+    .catch((err) => {
+      return err.message;
+    });
+};
 
 module.exports = {
   getMaps,
   getMapById,
-  // addUser,
-  // updateUser,
-  // deleteUser,
+  addMap,
+  updateMap,
+  deleteMap,
 };
 

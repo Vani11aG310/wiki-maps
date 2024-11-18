@@ -10,11 +10,11 @@
 
 ## Map routes
 
-* CREATE:      POST /api/maps
+* CREATE:      ~~POST /api/maps~~ (Completed)
 * READ:        ~~GET  /api/maps~~ (Completed)
 * (Single Map) ~~GET  /api/maps/:id~~ (Completed)
-* UPDATE:      POST /api/maps/:id
-* DELETE:      POST /api/maps/:id/delete
+* UPDATE:      ~~POST /api/maps/:id~~ (Completed)
+* DELETE:      ~~POST /api/maps/:id/delete~~ (Completed)
 
 ## Favourite maps routes Option 1
 

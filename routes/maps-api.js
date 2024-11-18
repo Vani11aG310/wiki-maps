@@ -34,47 +34,47 @@ mapQueries.getMapById(mapId)
     });
 });
 
-// router.post('/', (req, res) => {
-//   const user = req.body;
+router.post('/', (req, res) => {
+  const map = req.body;
 
-//   userQueries.addUser(user)
-//     .then(user => {
-//       res.json({ user });
-//     })
-//     .catch(err => {
-//       res
-//         .status(500)
-//         .json({ error: err.message });
-//     });
-// });
+  mapQueries.addMap(map)
+    .then(map => {
+      res.json({ map });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
 
-// router.post('/:id/delete', (req, res) => {
-//   const userId = req.params.id;
+router.post('/:id/delete', (req, res) => {
+  const mapId = req.params.id;
 
-//   userQueries.deleteUser(userId)
-//     .then(user => {
-//       res.json({ user });
-//     })
-//     .catch(err => {
-//       res
-//         .status(500)
-//         .json({ error: err.message });
-//     });
-// });
+  mapQueries.deleteMap(mapId)
+    .then(map => {
+      res.json({ map });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
 
-// router.post('/:id', (req, res) => {
-//   const user = req.body;
-//   user.id = req.params.id
+router.post('/:id', (req, res) => {
+  const map = req.body;
+  map.id = req.params.id
 
-//   userQueries.updateUser(user)
-//     .then(user => {
-//       res.json({ user });
-//     })
-//     .catch(err => {
-//       res
-//         .status(500)
-//         .json({ error: err.message });
-//     });
-// });
+  mapQueries.updateMap(map)
+    .then(map => {
+      res.json({ map });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
 
 module.exports = router;
