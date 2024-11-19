@@ -24,14 +24,16 @@
   <header>
     <%- include('partials/_header') %>
   </header>
+  <% for (let map of maps) { %>
   <div class="card" style="width: 95%;">
-    <img src="..." class="card-img-top" alt="...">
+    <img src=<%= map.photo_url %> class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">Map title</h5>
-      <p class="card-text">This is a map of my local area, and these are the places that I frequent in my local area.</p>
+      <h5 class="card-title"><%= map.title %></h5>
+      <p class="card-text"><%= map.description %></p>
       <a type="button" class="btn btn-primary btn-sm">View Map</a>
     </div>
   </div>
+  <% } %>
   <footer>
     <%- include('partials/_footer') %>
   </footer>
