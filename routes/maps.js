@@ -61,7 +61,8 @@ router.post('/', (req, res) => {
     user_id: req.cookies.user_id,
     title: req.body.mapTitle,
     address: req.body.mapAddress,
-    description: req.body.mapDescription
+    description: req.body.mapDescription,
+    photo_url: req.body.mapPhoto
   }
   console.log(map)
 
