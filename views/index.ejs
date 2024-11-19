@@ -30,7 +30,9 @@
     <div class="card-body">
       <h5 class="card-title"><%= map.title %></h5>
       <p class="card-text"><%= map.description %></p>
-      <a type="button" class="btn btn-primary btn-sm">View Map</a>
+      <form method="GET" action="/maps/<%= map.id %>">
+      <button type="submit" class="btn btn-primary btn-sm">View Map</button>
+    </form>
     </div>
   </div>
   <% } %>
