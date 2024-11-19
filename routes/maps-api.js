@@ -39,7 +39,7 @@ router.post('/', (req, res) => {
 
   mapQueries.addMap(map)
     .then(map => {
-      res.json({ map });
+      res.render({ map });
     })
     .catch(err => {
       res

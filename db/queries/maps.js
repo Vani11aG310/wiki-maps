@@ -44,13 +44,13 @@ const getMapById = (id) => {
 const addMap = (map) => {
   const queryString = `
   INSERT INTO maps
-  (user_id, title, description, photo_url)
+  (user_id, title, address, description, photo_url)
   VALUES 
-  ($1, $2, $3, $4)
+  ($1, $2, $3, $4, $5)
   RETURNING *;
   `;
 
-  const queryParams = [map.user_id, map.title, map.description, map.photo_url];
+  const queryParams = [map.user_id, map.title, map.address, map.description, map.photo_url];
 
   return db.query(queryString, queryParams)
     .then((result) => {
@@ -66,13 +66,14 @@ const updateMap = (map) => {
   UPDATE maps
   SET user_id = $2,
   title = $3,
-  description = $4,
-  photo_url = $5
+  address = $4
+  description = $5,
+  photo_url = $6
   WHERE id = $1
   RETURNING *;
   `;
 
-  const queryParams = [map.id, map.user_id, map.title, map.description, map.photo_url];
+  const queryParams = [map.id, map.user_id, map.title, map.address, map.description, map.photo_url];
 
   return db.query(queryString, queryParams)
     .then((result) => {

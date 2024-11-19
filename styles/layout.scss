@@ -1,6 +1,25 @@
 // See: https://sass-lang.com/
 
-body,
-html {
-  margin: 0;
+// body,
+// html {
+//   margin: 0;
+// }
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav.button {
+  display: block;
+}
+
+body {
+  padding-top: 60px;
+  align-items: center;
+}
+
+.card {
+  margin-left: 2.5%;
+  margin-right: 2.5%
 }

@@ -2,13 +2,14 @@ Please create an insert query that will insert 30 maps using the following shape
 
 userid_id is a number between 1 an 3.
 title is the name of the map.  The map name is a list of a favourite places, restaurants, or things to do in a Canadian city.
+address is the address of the area the map is covering.
 description is short description of the map.  It should not exceed 50 characters.
 photo_url is a link to https://picsum.photos/id/<id>/1024/768'. Replace <id> with a sequence number starting at 1.
 
 INSERT INTO maps 
-(user_id, title, description, photo_url) 
+(user_id, title, address, description, photo_url) 
 VALUES
-(1, 'Victoria Landmarks', 'Favorite spots in Victoria.', 'https://picsum.photos/id/1/200/300');
+(1, 'Victoria Landmarks', 'Victoria British Columbia', 'Favorite spots in Victoria.', 'https://picsum.photos/id/1/200/300');
 
 
 Now, based on the previous query, I need to add 4 places to each map using the following shape.
