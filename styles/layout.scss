@@ -10,9 +10,7 @@
   align-items: center;
 }
 
-nav.button {
-  display: block;
-}
+
 
 body {
   padding-top: 60px;
@@ -23,4 +21,9 @@ body {
 .card {
   margin-left: 2.5%;
   margin-right: 2.5%
+}
+
+.button_div {
+  display: flex;
+  justify-content: space-between;
 }

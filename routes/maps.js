@@ -33,7 +33,7 @@ router.get('/new_part1', (req, res) => {
 })
 
 router.get('/new_part2', (req, res) => {
-  
+
 })
 
 // router.post('/', (req, res) => {
