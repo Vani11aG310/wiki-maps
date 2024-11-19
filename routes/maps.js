@@ -7,6 +7,11 @@
 const express = require('express');
 const router  = express.Router();
 const mapQueries = require('../db/queries/maps');
+const needle = require('needle');
+const cookieParser = require('cookie-parser');
+
+router.use(cookieParser());
+
 router.get('/', (req, res) => {
     mapQueries.getMaps()
       .then(maps => {
@@ -14,12 +19,63 @@ router.get('/', (req, res) => {
       })
 });
 
+router.get('/new_part1', (req, res) => {
+  res.render('maps_new_part1')
+});
+
+router.get('/new_part2', (req, res) => {
+  const address = req.query.mapAddress;
+  const geocodeAPIURL = 'https://singlesearch.alk.com/NA/api/search?';
+  const options = {
+    authToken: process.env.GEOCODE_API,
+    query: address
+  }
+  needle.request('get', geocodeAPIURL, options, (req, response) => {
+    res.render('maps_new_part2', { lat: response.body.Locations[0].Coords.Lat, long: response.body.Locations[0].Coords.Lon })
+  })
+});
+
 router.get('/:id', (req, res) => {
   const mapId = req.params.id;
 
-mapQueries.getMapById(mapId)
-.then(map => {
-      res.render('map', { map });
+  mapQueries.getMapById(mapId)
+  .then(map => {
+        res.render('map', { map });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+});
+
+
+// router.get('/new_part2', (req, res) => {
+//   const address = req.body.mapAddress
+//   console.log(address)
+//   res.render('maps_new_part2')
+// })
+
+router.post('/', (req, res) => {
+  const map = {
+    user_id: req.cookies.user_id,
+    title: req.body.mapTitle,
+    address: req.body.mapAddress,
+    description: req.body.mapDescription
+  }
+  console.log(map)
+
+  mapQueries.addMap(map)
+    .then(map => {
+      const address = map.address;
+      const geocodeAPIURL = 'https://singlesearch.alk.com/NA/api/search?';
+      const options = {
+        authToken: process.env.GEOCODE_API,
+        query: address
+      }
+      needle.request('get', geocodeAPIURL, options, (req, response) => {
+        res.render('maps_new_part2', { lat: response.body.Locations[0].Coords.Lat, long: response.body.Locations[0].Coords.Lon })
+      })
     })
     .catch(err => {
       res
@@ -27,28 +83,6 @@ mapQueries.getMapById(mapId)
         .json({ error: err.message });
     });
 });
-
-router.get('/new_part1', (req, res) => {
-  res.render('maps_new')
-})
-
-router.get('/new_part2', (req, res) => {
-  
-})
-
-// router.post('/', (req, res) => {
-//   const map = req.body;
-
-//   mapQueries.addMap(map)
-//     .then(map => {
-//       res.json({ map });
-//     })
-//     .catch(err => {
-//       res
-//         .status(500)
-//         .json({ error: err.message });
-//     });
-// });
 
 // router.post('/:id/delete', (req, res) => {
 //   const mapId = req.params.id;
