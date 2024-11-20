@@ -11,15 +11,14 @@ const cookieParser = require('cookie-parser');
 router.use(cookieParser());
 
 router.get('/', (req, res) => {
-  if (!req.cookies.user_id) {
-    mapQueries.getMaps()
-      .then(maps => {
-        return res.render('index', {maps: maps});
+  mapQueries.getMaps()
+    .then(maps => {
+      const templateVars = {
+        user: req.cookies.user_id,
+        maps
+        };
+        res.render('index', templateVars);
       })
-  } else {mapQueries.getMaps()
-      .then(maps => {
-        return res.render('user_homepage', {maps: maps});
-      })}
 });
 
 router.get('/:id', (req, res) => {
@@ -27,7 +26,11 @@ router.get('/:id', (req, res) => {
 
 mapQueries.getMapById(mapId)
 .then(map => {
-      res.render('map', { map });
+  const templateVars = {
+    user: req.cookies.user_id,
+    map
+  };
+      res.render('map', templateVars);
     })
     .catch(err => {
       res
