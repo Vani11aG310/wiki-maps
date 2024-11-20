@@ -1,21 +1,21 @@
 ### Routes that we will need for our application
 
-## User routes
+## User routes (Completed)
 
-* CREATE:       ~~POST /api/users~~ (Completed)
-* READ:         ~~GET  /api/users~~ (Completed)
-* (Single User) ~~GET  /api/users/:id~~ (Completed)
-* UPDATE:       ~~POST /api/users/:id~~ (Completed)
-* DELETE:       ~~POST /api/users/:id/delete~~ (Completed)
-* Maps for a User ~~GET  /api/users/:id/maps~~ (Completed)
+* CREATE:          POST /api/users
+* READ:            GET  /api/users
+* (Single User)    GET  /api/users/:id
+* UPDATE:          POST /api/users/:id
+* DELETE:          POST /api/users/:id/delete
+* Maps for a User: GET  /api/users/:id/maps
 
-## Map routes
+## Map routes (Completed)
 
-* CREATE:      ~~POST /api/maps~~ (Completed)
-* READ:        ~~GET  /api/maps~~ (Completed)
-* (Single Map) ~~GET  /api/maps/:id~~ (Completed)
-* UPDATE:      ~~POST /api/maps/:id~~ (Completed)
-* DELETE:      ~~POST /api/maps/:id/delete~~ (Completed)
+* CREATE:      POST /api/maps
+* READ:        GET  /api/maps
+* (Single Map) GET  /api/maps/:id
+* UPDATE:      POST /api/maps/:id
+* DELETE:      POST /api/maps/:id/delete
 
 ## Favourite maps routes Option 1
 
