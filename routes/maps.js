@@ -30,12 +30,15 @@ mapQueries.getMapById(mapId)
     user: req.cookies.user_id,
     map
   };
-      res.render('map', templateVars);
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
+  if (req.cookies.user_id) {
+    return res.render('user_map', templateVars);
+  }
+  res.render('map', templateVars);
+  })
+  .catch(err => {
+    res
+      .status(500)
+      .json({ error: err.message });
     });
 });
 
