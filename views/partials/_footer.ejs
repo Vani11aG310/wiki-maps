@@ -1,7 +1,16 @@
 <footer>
   <nav class="navbar fixed-bottom bg-secondary">
     <div class="container-fluid">
-      <button type="submit" class="btn">Profile</button>
-      <button type="submit" class="btn">My Maps</button>
-      <button type="submit" class="btn">My Favourites</button>
+
+      <% if (user) { %>
+        <form method="GET" action="/maps">
+          <button type="submit" class="btn">Profile</button>
+        </form>
+        <form method="GET" action="/maps">
+          <button type="submit" class="btn">My Maps</button>
+        </form>
+        <form method="GET" action="/maps">
+          <button type="submit" class="btn">My Favourites</button>
+        </form>
+        <% } %>
 </footer>

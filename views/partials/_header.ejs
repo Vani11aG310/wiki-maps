@@ -3,10 +3,16 @@
     <div class="container-fluid">
 
     </div>
-    <a class="navbar-brand" >Wiki Maps</a>
-
-    <button type="submit" class="btn btm-sm">Login</button>
-    <button type="submit" class="btn btn-sm">Sign up</button>
-
+    <a class="navbar-brand">Wiki Maps</a>
+    <% if (user) { %>
+      <form method="POST" action="/logout">
+        <button type="submit" class="btn btn-sm">Logout</button>
+      </form>
+      <%} else { %>
+        <form method="GET" action="/login">
+        <button type="submit" class="btn btn-sm">Login</button></form>
+        <form method="GET" action="/register">
+        <button type="submit" class="btn btn-sm">Sign up</button></form>
+        <%}%>
   </nav>
 </header>
