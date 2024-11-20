@@ -39,73 +39,75 @@ const getPlaceById = (id) => {
     });
 };
 
-// const addMap = (map) => {
-//   const queryString = `
-//   INSERT INTO maps
-//   (user_id, title, address, description, photo_url)
-//   VALUES 
-//   ($1, $2, $3, $4, $5)
-//   RETURNING *;
-//   `;
+const addPlace = (place) => {
+  const queryString = `
+  INSERT INTO places
+  (map_id, title, latitude, longitude, description, photo_url)
+  VALUES 
+  ($1, $2, $3, $4, $5, $6)
+  RETURNING *;
+  `;
 
-//   const queryParams = [map.user_id, map.title, map.address, map.description, map.photo_url];
+  const queryParams = [place.map_id, place.title, place.latitude, place.longitude, place.description, place.photo_url];
 
-//   return db.query(queryString, queryParams)
-//     .then((result) => {
-//       return result.rows[0];
-//     })
-//     .catch((err) => {
-//       return err.message;
-//     });
-// };
+  return db.query(queryString, queryParams)
+    .then((result) => {
+      return result.rows[0];
+    })
+    .catch((err) => {
+      console.log(err.message);
+      return err.message;
+    });
+};
 
-// const updateMap = (map) => {
-//   const queryString = `
-//   UPDATE maps
-//   SET user_id = $2,
-//   title = $3,
-//   address = $4
-//   description = $5,
-//   photo_url = $6
-//   WHERE id = $1
-//   RETURNING *;
-//   `;
+const updatePlace = (place) => {
+  const queryString = `
+  UPDATE places
+  SET map_id = $2,
+  title = $3,
+  latitude = $4,
+  longitude = $5,
+  description = $6,
+  photo_url = $7
+  WHERE id = $1
+  RETURNING *;
+  `;
 
-//   const queryParams = [map.id, map.user_id, map.title, map.address, map.description, map.photo_url];
+  const queryParams = [place.id, place.map_id, place.title, place.latitude, place.longitude, place.description, place.photo_url];
 
-//   return db.query(queryString, queryParams)
-//     .then((result) => {
-//       return result.rows[0];
-//     })
-//     .catch((err) => {
-//       return err.message;
-//     });
-// };
+  return db.query(queryString, queryParams)
+    .then((result) => {
+      return result.rows[0];
+    })
+    .catch((err) => {
+      return err.message;
+    });
+};
 
-// const deleteMap = (id) => {
-//   const queryString = `
-//   DELETE 
-//   FROM maps
-//   WHERE id = $1
-//   RETURNING *;
-//   `;
+const deletePlace = (id) => {
+  const queryString = `
+  DELETE 
+  FROM places
+  WHERE id = $1
+  RETURNING *;
+  `;
 
-//   const queryParams = [id];
+  const queryParams = [id];
 
-//   return db.query(queryString, queryParams)
-//     .then((result) => {
-//       return result.rows[0];
-//     })
-//     .catch((err) => {
-//       return err.message;
-//     });
-// };
+  return db.query(queryString, queryParams)
+    .then((result) => {
+      return result.rows[0];
+    })
+    .catch((err) => {
+      return err.message;
+    });
+};
 
 module.exports = {
   getPlaces,
   getPlaceById,
-  // addMap,
-  // updateMap,
-  // deleteMap,
+  addPlace,
+  updatePlace,
+  deletePlace,
 };
 

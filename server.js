@@ -48,7 +48,7 @@ app.use('/maps', mapsRoutes);
 
 //plain text cookie, comment in to activate
 app.get('/', (req, res) => {
-  res.cookie('user_id', '1');
+  res.cookie('user_id', '3');
   res.redirect('/maps');
 });
 

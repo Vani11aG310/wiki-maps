@@ -34,47 +34,47 @@ placeQueries.getPlaceById(placeId)
     });
 });
 
-// router.post('/', (req, res) => {
-//   const map = req.body;
+router.post('/', (req, res) => {
+  const place = req.body;
 
-//   mapQueries.addMap(map)
-//     .then(map => {
-//       res.render({ map });
-//     })
-//     .catch(err => {
-//       res
-//         .status(500)
-//         .json({ error: err.message });
-//     });
-// });
+  placeQueries.addPlace(place)
+    .then(place => {
+      res.json({ place });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
 
-// router.post('/:id/delete', (req, res) => {
-//   const mapId = req.params.id;
+router.post('/:id/delete', (req, res) => {
+  const placeId = req.params.id;
 
-//   mapQueries.deleteMap(mapId)
-//     .then(map => {
-//       res.json({ map });
-//     })
-//     .catch(err => {
-//       res
-//         .status(500)
-//         .json({ error: err.message });
-//     });
-// });
+  placeQueries.deletePlace(placeId)
+    .then(place => {
+      res.json({ place });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
 
-// router.post('/:id', (req, res) => {
-//   const map = req.body;
-//   map.id = req.params.id
+router.post('/:id', (req, res) => {
+  const place = req.body;
+  place.id = req.params.id
 
-//   mapQueries.updateMap(map)
-//     .then(map => {
-//       res.json({ map });
-//     })
-//     .catch(err => {
-//       res
-//         .status(500)
-//         .json({ error: err.message });
-//     });
-// });
+  placeQueries.updatePlace(place)
+    .then(place => {
+      res.json({ place });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
 
 module.exports = router;
