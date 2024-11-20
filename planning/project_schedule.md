@@ -12,14 +12,25 @@
 ## Monday
 - Queries & Helper Functions
 - Routes (Build)
-- POC for Map (Leaflet vs Google)
-- POC for App layout (beyond wireframe)
+- ~~POC for Map (Leaflet vs Google)~~
+- ~~POC for App layout (beyond wireframe)~~
 
 ## Tuesday
-- Build App
+- ~~Non-logged in Map~~
+- ~~Create Map~~
 
 ## Wednesday
-- Integration Testing
+- Finish Queries & Helper Functions
+- Finish Routes (Build)
+  - Add Places to a Map
+  - Modifiy Places on Map
+  - Maps for a specific User
+  - Favourite Maps for a specific User
+  - Save Favourites / Remove Favourite
+- Logged in Map
+- Own Map View
+- Save Places
+- Toggle Logged In /Not Logged In User
 
 ## Thursday
 - Practice Demo

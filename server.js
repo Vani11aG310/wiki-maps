@@ -28,6 +28,7 @@ app.use(express.static('public'));
 // Separated Routes for each Resource
 const usersApiRoutes = require('./routes/users-api');
 const mapsApiRoutes = require('./routes/maps-api');
+const placesApiRoutes = require('./routes/places-api');
 const usersRoutes = require('./routes/users');
 const mapsRoutes = require('./routes/maps');
 
@@ -35,6 +36,7 @@ const mapsRoutes = require('./routes/maps');
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 app.use('/api/users', usersApiRoutes);
 app.use('/api/maps', mapsApiRoutes);
+app.use('/api/places', placesApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/maps', mapsRoutes);
 
