@@ -7,6 +7,8 @@ const express = require('express');
 const morgan = require('morgan');
 const PORT = process.env.PORT || 8080;
 const app = express();
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
 
 app.set('view engine', 'ejs');
 
@@ -43,7 +45,7 @@ app.use('/maps', mapsRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  res.cookie('user_id', '1');
+  //res.cookie('user_id', '1');
   res.redirect('/maps');
 });
 

@@ -7,11 +7,19 @@
 const express = require('express');
 const router  = express.Router();
 const mapQueries = require('../db/queries/maps');
+const cookieParser = require('cookie-parser');
+router.use(cookieParser());
+
 router.get('/', (req, res) => {
+  if (!req.cookies.user_id) {
     mapQueries.getMaps()
       .then(maps => {
-        res.render('index', {maps: maps});
+        return res.render('index', {maps: maps});
       })
+  } else {mapQueries.getMaps()
+      .then(maps => {
+        return res.render('user_homepage', {maps: maps});
+      })}
 });
 
 router.get('/:id', (req, res) => {
