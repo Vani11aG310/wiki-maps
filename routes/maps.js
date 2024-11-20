@@ -7,6 +7,7 @@
 const express = require('express');
 const router  = express.Router();
 const mapQueries = require('../db/queries/maps');
+
 const needle = require('needle');
 const cookieParser = require('cookie-parser');
 
@@ -29,17 +30,37 @@ router.get('/new_part1', (req, res) => {
 
 router.get('/:id', (req, res) => {
   const mapId = req.params.id;
-
   mapQueries.getMapById(mapId)
   .then(map => {
-        res.render('map', { map });
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
+    const templateVars = {
+      user: req.cookies.user_id,
+      map
+    };
+    if (req.cookies.user_id) {
+      return res.render('user_map', templateVars);
+    }
+    res.render('map', templateVars);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
       });
 });
+
+// router.post('/', (req, res) => {
+//   const map = req.body;
+
+//   mapQueries.addMap(map)
+//     .then(map => {
+//       res.json({ map });
+//     })
+//     .catch(err => {
+//       res
+//         .status(500)
+//         .json({ error: err.message });
+//     });
+// });
 
 
 // router.get('/new_part2', (req, res) => {

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
+
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,35 +12,50 @@
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <!-- External css and javascript from leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
-  <title>Wiki Maps</title>
+  <title>Map Page</title>
 </head>
 
 <body>
   <header>
     <%- include('partials/_header') %>
   </header>
-  <div>this is the user</div>
-  <% for (let map of maps) { %>
-  <div class="card" style="width: 95%;">
-    <img src=<%= map.photo_url %> class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title"><%= map.title %></h5>
-      <p class="card-text"><%= map.description %></p>
-      <form method="GET" action="/maps/<%= map.id %>">
-        <button type="submit" class="btn btn-primary btn-sm">View Map</button>
-      </form>
-    </div>
+
+  <div id="mapCreate" style="height: 400px; width: 100%;">
   </div>
-  <% } %>
+  <div class="button_div">
+    <button type="submit" class="btn btn-sm">Comment</button>
+    <button type="submit" class="btn btn-sm">Edit Map</button>
+    <button type="submit" class="btn btn-sm">Add to Favourites</button>
+  </div>
+  <main class="container">
+    <h5 class="map_title"><%= map.title %></h5>
+    <p class="map_description"><%= map.description %></p>
+  </main>
+
   <footer>
     <%- include('partials/_footer') %>
   </footer>
-
+  <!-- Leaflet JS to render map -->
+  <script>
+    const map = L.map('mapCreate').setView([51.505, -0.09], 18);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+  </script>
   <!-- Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
