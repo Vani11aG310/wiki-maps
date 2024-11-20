@@ -43,6 +43,7 @@ app.use('/maps', mapsRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
+  res.cookie('user_id', '2')
   res.redirect('/maps');
 });
 

@@ -12,8 +12,8 @@
 ## Monday
 - Queries & Helper Functions
 - Routes (Build)
-- POC for Map (Leaflet vs Google)
-- POC for App layout (beyond wireframe)
+- ~~POC for Map (Leaflet vs Google)~~ (Completed)
+- ~~POC for App layout (beyond wireframe)~~ (Completed)
 
 ## Tuesday
 - Build App

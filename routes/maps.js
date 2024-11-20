@@ -15,24 +15,16 @@ router.use(cookieParser());
 router.get('/', (req, res) => {
     mapQueries.getMaps()
       .then(maps => {
-        res.render('index', {maps: maps});
+        const templateVars = {
+          user: req.cookies.user_id,
+          maps
+        }
+        res.render('index', templateVars);
       })
 });
 
 router.get('/new_part1', (req, res) => {
   res.render('maps_new_part1')
-});
-
-router.get('/new_part2', (req, res) => {
-  const address = req.query.mapAddress;
-  const geocodeAPIURL = 'https://singlesearch.alk.com/NA/api/search?';
-  const options = {
-    authToken: process.env.GEOCODE_API,
-    query: address
-  }
-  needle.request('get', geocodeAPIURL, options, (req, response) => {
-    res.render('maps_new_part2', { lat: response.body.Locations[0].Coords.Lat, long: response.body.Locations[0].Coords.Lon })
-  })
 });
 
 router.get('/:id', (req, res) => {
@@ -68,6 +60,7 @@ router.post('/', (req, res) => {
 
   mapQueries.addMap(map)
     .then(map => {
+      res.cookie('map_id', map.id)
       const address = map.address;
       const geocodeAPIURL = 'https://singlesearch.alk.com/NA/api/search?';
       const options = {
