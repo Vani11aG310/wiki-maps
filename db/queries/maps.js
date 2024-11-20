@@ -95,11 +95,33 @@ const deleteMap = (id) => {
     });
 };
 
+const getPlacesByMap = (id) => {
+  const queryString = `
+  SELECT p.*, 
+  u.name as user_name,
+  m.title as map_title
+  FROM places p
+  JOIN maps m
+  ON m.id = p.map_id
+  JOIN users u
+  ON u.id = m.user_id
+  WHERE m.id = $1
+  ORDER by lower(u.name), lower(m.title), p.title;`;
+
+  const queryParams = [id];
+
+  return db.query(queryString, queryParams)
+    .then((response) => {
+      return response.rows;
+    });
+};
+
 module.exports = {
   getMaps,
   getMapById,
   addMap,
   updateMap,
   deleteMap,
+  getPlacesByMap,
 };
 
