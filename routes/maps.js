@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/new_part1', (req, res) => {
-  res.render('maps_new_part1')
+  res.render('maps_new_part1', { user: req.cookies.user_id})
 });
 
 router.get('/:id', (req, res) => {
@@ -89,7 +89,7 @@ router.post('/', (req, res) => {
         query: address
       }
       needle.request('get', geocodeAPIURL, options, (req, response) => {
-        res.render('maps_new_part2', { lat: response.body.Locations[0].Coords.Lat, long: response.body.Locations[0].Coords.Lon })
+        res.render('maps_new_part2', { lat: response.body.Locations[0].Coords.Lat, long: response.body.Locations[0].Coords.Lon, user: map.user_id })
       })
     })
     .catch(err => {
