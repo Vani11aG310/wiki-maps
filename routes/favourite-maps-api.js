@@ -51,4 +51,19 @@ router.post('/:id', (req, res) => {
     });
 });
 
+router.get('/:user_id/:map_id', (req, res) => {
+  const userId = req.params.user_id;
+  const mapId = req.params.map_id;
+
+  favouriteMapQueries.isFavouriteMap(userId, mapId)
+    .then(favouriteMap => {
+      res.json({ favouriteMap });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
 module.exports = router;

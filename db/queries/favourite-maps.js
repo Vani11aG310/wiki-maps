@@ -59,9 +59,29 @@ const deleteFavouriteMap = (id) => {
     });
 };
 
+const isFavouriteMap = (userId, mapId) => {
+  const queryString = `
+  SELECT *
+  FROM favourite_maps
+  WHERE user_id = $1
+  AND map_id = $2;
+  `;
+
+  const queryParams = [userId, mapId];
+
+  return db.query(queryString, queryParams)
+    .then((result) => {
+      return result.rows[0];
+    })
+    .catch((err) => {
+      return err.message;
+    });
+};
+
 module.exports = {
   addFavouriteMap,
   updateFavouriteMap,
   deleteFavouriteMap,
+  isFavouriteMap,
 };
 

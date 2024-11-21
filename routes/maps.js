@@ -1,8 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const mapQueries = require('../db/queries/maps');
-
-
+const favouriteMapQueries = require('../db/queries/favourite-maps');
 const needle = require('needle');
 const cookieParser = require('cookie-parser');
 
@@ -24,20 +23,32 @@ router.get('/new_part1', (req, res) => {
   res.render('maps_new_part1', { user: Number(req.cookies.user_id)})
 });
 
-
+// Rod
 router.get('/:id', (req, res) => {
   const mapId = req.params.id;
+  const userId = Number(req.cookies.user_id);
   const templateVars = {
     map: null,
     lat: null,
     lng: null,
     places: null,
-    user: Number(req.cookies.user_id)
+    user: userId,
   }
+  let address = null;
+
   mapQueries.getMapById(mapId)
     .then(map => {
-      templateVars.map = map;
-      const address = map.address;
+       templateVars.map = map;
+       address = map.address;
+
+      return favouriteMapQueries.isFavouriteMap(userId, mapId)
+    })
+    .then(favouriteMap => {
+      const isFavouriteMap = favouriteMap ? true : false;
+      const favouriteMapId = favouriteMap ? favouriteMap.id : null;
+      templateVars.isFavouriteMap = isFavouriteMap;
+      templateVars.favouriteMapId = favouriteMapId;
+
       const geocodeAPIURL = 'https://singlesearch.alk.com/NA/api/search?';
       const options = {
         authToken: process.env.GEOCODE_API,
@@ -51,7 +62,7 @@ router.get('/:id', (req, res) => {
             templateVars.places = places;
             res.render('map', templateVars);
           })
-      })
+      })     
     })
     .catch(err => {
       res
@@ -66,6 +77,7 @@ router.get('/:id/update', (req, res) => {
   }
   res.render('maps', templateVars)
 });
+
 
 router.post('/', (req, res) => {
   const map = {
@@ -95,8 +107,9 @@ router.post('/', (req, res) => {
       .status(500)
       .json({ error: err.message });
     });
-  });
-  // router.post('/', (req, res) => {
+});
+
+// router.post('/', (req, res) => {
 //   const map = req.body;
 
 //   mapQueries.addMap(map)
