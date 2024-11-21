@@ -110,8 +110,10 @@ const getMapsByUser = (userId) => {
 
 const getFavouriteMapsByUser = (userId) => {
   const queryString = `
-  SELECT fm.*, 
+  SELECT m.*, 
+  u.id as user_id,
   u.name as user_name, 
+  o.id as owner_id,
   o.name as owner_name,
   m.title as map_title
   FROM favourite_maps fm
