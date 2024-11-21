@@ -4,13 +4,20 @@
 
       <% if (user) { %>
         <form method="GET" action="/maps">
-          <button type="submit" class="btn">Profile</button>
+          <button type="submit" class="btn btn-sm">All Maps</button>
+        </form>
+        <form method="GET" action="/users/:userId/maps">
+          <button type="submit" class="btn btn-sm">My Maps</button>
+        </form>
+        <form method="GET" action="/users/:userId/favourite-maps">
+          <button type="submit" class="btn btn-sm">My Favourites</button>
         </form>
         <form method="GET" action="/maps">
-          <button type="submit" class="btn">My Maps</button>
+          <button type="submit" class="btn btn-sm">Create a Map</button>
         </form>
-        <form method="GET" action="/maps">
-          <button type="submit" class="btn">My Favourites</button>
-        </form>
+        <% } else { %>
+          <form method="GET" action="/maps">
+            <button type="" class="btn btn-sm"></button>
+          </form>
         <% } %>
 </footer>

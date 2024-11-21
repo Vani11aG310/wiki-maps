@@ -16,10 +16,21 @@
 - ~~POC for App layout (beyond wireframe)~~ (Completed)
 
 ## Tuesday
-- Build App
+- ~~Non-logged in Map~~
+- ~~Create Map~~
 
 ## Wednesday
-- Integration Testing
+- Finish Queries & Helper Functions
+- Finish Routes (Build)
+  - ~~Add Places to a Map~~
+  - ~~Modifiy Places on Map~~
+  - ~~Maps for a specific User~~
+  - ~~Favourite Maps for a specific User~~
+  - Save Favourites / Remove Favourite
+- Logged in Map
+- Own Map View
+- Save Places
+- Toggle Logged In /Not Logged In User
 
 ## Thursday
 - Practice Demo

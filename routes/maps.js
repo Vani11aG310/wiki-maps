@@ -1,12 +1,9 @@
-/*
- * All routes for Map Data are defined here.
- * Since this file is loaded in server.js into api/maps,
- * these routes are mounted onto /api/maps
- */
+
 
 const express = require('express');
 const router  = express.Router();
 const mapQueries = require('../db/queries/maps');
+
 
 const needle = require('needle');
 const cookieParser = require('cookie-parser');
@@ -23,6 +20,8 @@ router.get('/', (req, res) => {
         res.render('index', templateVars);
       })
 });
+
+
 
 router.get('/new_part1', (req, res) => {
   res.render('maps_new_part1', { user: req.cookies.user_id})

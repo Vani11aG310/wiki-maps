@@ -8,14 +8,16 @@
 * UPDATE:          POST /api/users/:id
 * DELETE:          POST /api/users/:id/delete
 * Maps for a User: GET  /api/users/:id/maps
+* Favourite Maps for a User: GET  /api/users/:id/favourite-maps
 
 ## Map routes (Completed)
 
-* CREATE:      POST /api/maps
-* READ:        GET  /api/maps
-* (Single Map) GET  /api/maps/:id
-* UPDATE:      POST /api/maps/:id
-* DELETE:      POST /api/maps/:id/delete
+* CREATE:           POST /api/maps
+* READ:             GET  /api/maps
+* (Single Map)      GET  /api/maps/:id
+* UPDATE:           POST /api/maps/:id
+* DELETE:           POST /api/maps/:id/delete
+* Places for a Map  GET  /api/maps/:id/places
 
 ## Favourite maps routes Option 1
 

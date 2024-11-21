@@ -20,6 +20,20 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/:id/places', (req, res) => {
+  const mapId = req.params.id;
+
+  mapQueries.getPlacesByMap(mapId)
+    .then(places => {
+      res.json({ places });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
 router.get('/:id', (req, res) => {
   const mapId = req.params.id;
 

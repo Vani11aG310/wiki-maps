@@ -2,7 +2,7 @@ const db = require('../connection');
 
 const getUsers = () => {
   const queryString = `
-    SELECT * 
+    SELECT *
     FROM users
     ORDER by lower(name);`;
 
@@ -14,8 +14,8 @@ const getUsers = () => {
 
 const getUserById = (id) => {
   const queryString = `
-    SELECT * 
-    FROM users 
+    SELECT *
+    FROM users
     WHERE id = $1;`;
 
   const queryParams = [id];
@@ -30,7 +30,7 @@ const addUser = (user) => {
   const queryString = `
   INSERT INTO users
   (name, email, password)
-  VALUES 
+  VALUES
   ($1, $2, $3)
   RETURNING *;
   `;
@@ -49,7 +49,7 @@ const addUser = (user) => {
 const updateUser = (user) => {
   const queryString = `
   UPDATE users
-  SET name = $2, 
+  SET name = $2,
   email = $3,
   password = $4
   WHERE id = $1
@@ -69,7 +69,7 @@ const updateUser = (user) => {
 
 const deleteUser = (id) => {
   const queryString = `
-  DELETE 
+  DELETE
   FROM users
   WHERE id = $1
   RETURNING *;
@@ -88,9 +88,9 @@ const deleteUser = (id) => {
 
 const getMapsByUser = (userId) => {
   const queryString = `
-  SELECT m.*, 
-  u.name as user_name, 
-  case when fm.id is NULL THEN false ELSE true END as is_favourite 
+  SELECT m.*,
+  u.name as user_name,
+  case when fm.id is NULL THEN false ELSE true END as is_favourite
   FROM maps m
   JOIN users u
   ON u.id = m.user_id
@@ -108,6 +108,31 @@ const getMapsByUser = (userId) => {
     });
 };
 
+const getFavouriteMapsByUser = (userId) => {
+  const queryString = `
+  SELECT m.*,
+  u.id as user_id,
+  u.name as user_name,
+  o.id as owner_id,
+  o.name as owner_name,
+  m.title as map_title
+  FROM favourite_maps fm
+  JOIN maps m
+  ON m.id = fm.map_id
+  JOIN users u    -- User whose favourites we are getting
+  ON u.id = fm.user_id
+  JOIN users o    -- Owner of the Map
+  ON o.id = m.user_id
+  WHERE fm.user_id = $1
+  ORDER by lower(o.name), lower(m.title);`;
+
+  const queryParams = [userId];
+
+  return db.query(queryString, queryParams)
+    .then((response) => {
+      return response.rows;
+    });
+  };
 
 module.exports = {
   getUsers,
@@ -116,5 +141,6 @@ module.exports = {
   updateUser,
   deleteUser,
   getMapsByUser,
+  getFavouriteMapsByUser,
 };
 
