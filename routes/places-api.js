@@ -49,8 +49,6 @@ router.post('/', (req, res) => {
     user: req.cookies.user_id
   }
   
-  
-
   for (let i = 0; i < parsedBody.length; i++) {
     const place = {
       map_id: req.cookies.map_id,

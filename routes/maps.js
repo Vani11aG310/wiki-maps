@@ -29,13 +29,31 @@ router.get('/new_part1', (req, res) => {
 
 router.get('/:id', (req, res) => {
   const mapId = req.params.id;
+  const templateVars = {
+    map: null,
+    lat: null,
+    lng: null,
+    places: null,
+    user: req.cookies.user_id
+  }
   mapQueries.getMapById(mapId)
     .then(map => {
-      const templateVars = {
-        user: req.cookies.user_id,
-        map
-      };
-      return res.render('user_map', templateVars);
+      templateVars.map = map;
+      const address = map.address;
+      const geocodeAPIURL = 'https://singlesearch.alk.com/NA/api/search?';
+      const options = {
+        authToken: process.env.GEOCODE_API,
+        query: address
+      }
+      needle.request('get', geocodeAPIURL, options, (request, response) => {
+        templateVars.lat = response.body.Locations[0].Coords.Lat;
+        templateVars.lng = response.body.Locations[0].Coords.Lon;
+        mapQueries.getPlacesByMap(mapId)
+          .then(places => {
+            templateVars.places = places;
+            res.render('map', templateVars);
+          })
+      })
     })
     .catch(err => {
       res
