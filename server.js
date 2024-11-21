@@ -34,6 +34,7 @@ const favouriteMapsApiRoutes = require('./routes/favourite-maps-api');
 const placesApiRoutes = require('./routes/places-api');
 const usersRoutes = require('./routes/users');
 const mapsRoutes = require('./routes/maps');
+const favouriteMapsRoutes = require('./routes/favourite-maps');
 
 // Mount all resource routes
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
@@ -43,6 +44,7 @@ app.use('/api/favourite-maps', favouriteMapsApiRoutes);
 app.use('/api/places', placesApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/maps', mapsRoutes);
+app.use('/favourite-maps', favouriteMapsRoutes);
 
 // Home page
 app.get('/', (req, res) => {

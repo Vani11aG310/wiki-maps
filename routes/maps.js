@@ -36,9 +36,12 @@ router.get('/:id', (req, res) => {
       return favouriteMapQueries.isFavouriteMap(userId, mapId)
     })
     .then(favouriteMap => {
-      const isFavouriteMap = favouriteMap ? true : false
-      templateVars.map.isFavouriteMap = isFavouriteMap;
+      const isFavouriteMap = favouriteMap ? true : false;
+      const favouriteMapId = favouriteMap ? favouriteMap.id : null;
+      templateVars.isFavouriteMap = isFavouriteMap;
+      templateVars.favouriteMapId = favouriteMapId;
 
+console.log(templateVars);
       return res.render('map', templateVars);      
     })
     .catch(err => {

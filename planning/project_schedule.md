@@ -32,7 +32,7 @@
 - ~~Save Places~~
 - ~~Add a Map~~
 - Display places on a Map
-- EJS file cleanup
+- ~~EJS file cleanup~~
 - Map Details
   - If logged in, user can favourite map
   - If logged in and owns map, use can edit

@@ -38,10 +38,17 @@
 
   <% if (user) { %>  
     <div class="button_div">
-      <button type="submit" class="btn btn-sm"><%= map.isFavouriteMap ? 'Remove from Favourites' : 'Add to Favourites' %> </button>      
+      <form method="POST" action="/favourite-maps/">
+        <input type="text" name="id" value="<%=favouriteMapId %>" hidden="true">
+        <input type="text" name="user_id" value="<%=user %>" hidden="true">
+        <input type="text" name="map_id" value="<%=map.id %>" hidden="true">
+        <button type="submit" class="btn btn-sm"><%= isFavouriteMap ? 'Remove from Favourites' : 'Add to Favourites' %> </button>     
+      </form> 
       <% if (map.user_id === user) { %>
+      <form method="GET" action="/maps/new_part1">
         <button type="submit" class="btn btn-sm">Edit Map</button>
-      <% } %>
+      </form> 
+      <% } %> 
     </div>
    <% } %>
 
@@ -49,7 +56,7 @@
     <h5 class="map_title"><%= map.title %></h5>
     <h6 class="map_id"><%= 'Map Id: ' + map.id %></h6>
     <h6 class="map_owner"><%= 'Map Owner: ' + map.owner_name + ' (' + map.user_id + ') Current User: ' + user %></h6>
-    <h6 class="map_favourite"><%= 'Is Favourite: ' + map.isFavouriteMap %></h6>
+    <h6 class="map_favourite"><%= 'Is Favourite: ' + isFavouriteMap %></h6>
     <p class="map_description"><%= map.description %></p>
   </main>
 
