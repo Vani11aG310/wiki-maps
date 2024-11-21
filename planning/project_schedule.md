@@ -22,10 +22,10 @@
 ## Wednesday
 - Finish Queries & Helper Functions
 - Finish Routes (Build)
-  - Add Places to a Map
-  - Modifiy Places on Map
-  - Maps for a specific User
-  - Favourite Maps for a specific User
+  - ~~Add Places to a Map~~
+  - ~~Modifiy Places on Map~~
+  - ~~Maps for a specific User~~
+  - ~~Favourite Maps for a specific User~~
   - Save Favourites / Remove Favourite
 - Logged in Map
 - Own Map View

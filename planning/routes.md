@@ -8,6 +8,7 @@
 * UPDATE:          POST /api/users/:id
 * DELETE:          POST /api/users/:id/delete
 * Maps for a User: GET  /api/users/:id/maps
+* Favourite Maps for a User: GET  /api/users/:id/favourite-maps
 
 ## Map routes (Completed)
 

@@ -22,8 +22,22 @@ router.get('/', (req, res) => {
 
 router.get('/:id/maps', (req, res) => {
   const userId = req.params.id;
-console.log(userId);
+
   userQueries.getMapsByUser(userId)
+    .then(maps => {
+      res.json({ maps });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
+router.get('/:id/favourite-maps', (req, res) => {
+  const userId = req.params.id;
+
+  userQueries.getFavouriteMapsByUser(userId)
     .then(maps => {
       res.json({ maps });
     })

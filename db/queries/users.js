@@ -108,6 +108,29 @@ const getMapsByUser = (userId) => {
     });
 };
 
+const getFavouriteMapsByUser = (userId) => {
+  const queryString = `
+  SELECT fm.*, 
+  u.name as user_name, 
+  o.name as owner_name,
+  m.title as map_title
+  FROM favourite_maps fm
+  JOIN maps m
+  ON m.id = fm.map_id
+  JOIN users u    -- User whose favourites we are getting
+  ON u.id = fm.user_id
+  JOIN users o    -- Owner of the Map
+  ON o.id = m.user_id
+  WHERE fm.user_id = $1
+  ORDER by lower(o.name), lower(m.title);`;
+
+  const queryParams = [userId];
+
+  return db.query(queryString, queryParams)
+    .then((response) => {
+      return response.rows;
+    });
+};
 
 module.exports = {
   getUsers,
@@ -116,5 +139,6 @@ module.exports = {
   updateUser,
   deleteUser,
   getMapsByUser,
+  getFavouriteMapsByUser,
 };
 
