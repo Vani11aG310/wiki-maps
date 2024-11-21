@@ -23,8 +23,10 @@
   <main style="margin: 1em;">
     <div id="mapCreate" style="height: 400px; width: 100%;">
     </div>
-    <input id="places_input" hidden="true">
-      <button type="submit" class="btn btn-outline-secondary">Submit Map</button>
+    <form action="/api/places" method="POST">
+      <input type="text" id="places_input" name="placesObject" hidden="true">
+      <button type="submit" class="btn btn-outline-secondary">Submit Map</button>\
+    </form>
     
   </main>
   <footer>
@@ -41,34 +43,43 @@
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
     let markers = [];
-    let markerObject = {
-      title: null,
-      lat: null,
-      lng: null,
-    };
+    let markerTitle;
     function onMapClick(e) {
       const marker = new L.Marker(e.latlng, {draggable:true});
       map.addLayer(marker);
-      markerObject.lat = marker.getLatLng().lat;
-      markerObject.lng = marker.getLatLng().lng;
-      marker.bindPopup("<div><input type='text' value='Enter a description' class='description-box'/></div><div><input type='button' value='submit detail' class= 'submit-button'></div>");
+      console.log(markers)
+      marker.bindPopup("<div><input type='text' value='Enter a description' class='description-box'/></div><div><input type=button value='Delete this marker' class='delete-marker-button' /></div>");
       marker.on("popupopen", onPopupOpen);
       return marker;
     }
     function onPopupOpen() {
+      let markerObject = {
+        title: null,
+        lat: null,
+        lng: null,
+      };
       const tempMarker = this;
-      $(".submit-button").click(function () {
-        tempMarker.setPopupContent(`<div class='title'>${$(".description-box").val()}</div>`)
-        markerObject.title = $('.title').text();
-        markers.push(markerObject);
-        console.log(markers);
+      $(".description-box").keypress(function (e) {
+        let key = e.which;
+        if (key === 13) {
+          tempMarker.setPopupContent(`<div id='title'>${$(".description-box").val()}</div><div><input type=button value='Delete this marker' class='delete-marker-button' /></div>`)
+          markerTitle = $('#title').text();
+          markerObject.title = markerTitle;
+          markerObject.lat = tempMarker.getLatLng().lat;
+          markerObject.lng = tempMarker.getLatLng().lng;
+          markers.push(markerObject);
+          console.log(markers);  
+        }
       })
-
+      $('.delete-marker-button:visible').click(function () {
+        markers.pop()
+        map.removeLayer(tempMarker);
+      })
     }
     map.on('click', onMapClick);
     $('.btn-outline-secondary').on('click', () => {
+      const jsonMarkers = JSON.stringify(markers)
       $('#places_input').val(JSON.stringify(markers));
-      console.log($('#places_input').val());
     })
   </script>
   <!-- Bootstrap JS -->
