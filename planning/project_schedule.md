@@ -29,13 +29,18 @@
 - ~~All Maps (Logged in and Not Logged in)~~
 - ~~Logged in Maps~~
 - ~~Favourite Maps~~
+- ~~Save Places~~
 - Add a Map
-- Save Places
+- Dispay places on a Map
 - Map Details
   - If logged in, user can favourite map
   - If logged in and owns map, use can edit
 - Toggle Logged In /Not Logged In User
 - Fit and Finish
+  - Remove View Map button. Replace with hyperlink on Map Title and image.
+  - Display Counter for number of maps (e.g. 1/30)
+  - Icons for Nav Footer bar
+  - Icon for "Add to Favourites"
 
 ## Thursday
 - Practice Demo
