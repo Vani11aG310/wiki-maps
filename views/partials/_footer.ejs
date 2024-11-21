@@ -14,6 +14,10 @@
         </form>
         <form method="GET" action="/maps/new_part1">
           <button type="submit" class="btn btn-sm">Create a Map</button>
-        <% } %>
+          <% } else { %>
+            <form method="GET" action="/maps">
+              <button type="submit" class="btn btn-sm">All Maps</button>
+            </form>
+            <% } %>
 
 </footer>
