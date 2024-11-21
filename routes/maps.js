@@ -1,5 +1,3 @@
-
-
 const express = require('express');
 const router  = express.Router();
 const mapQueries = require('../db/queries/maps');
@@ -17,7 +15,7 @@ router.get('/', (req, res) => {
           user: Number(req.cookies.user_id),
           maps
         }
-        res.render('index', templateVars);
+        res.render('maps', templateVars);
       })
 });
 
@@ -35,7 +33,7 @@ router.get('/:id', (req, res) => {
         user: Number(req.cookies.user_id),
         map
       };
-      return res.render('user_map', templateVars);
+      return res.render('map', templateVars);
     })
     .catch(err => {
       res

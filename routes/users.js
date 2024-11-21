@@ -24,7 +24,7 @@ router.get('/:userId/maps', (req, res) => {
         user: req.cookies.user_id,
         maps
       }
-      res.render('index', templateVars);
+      res.render('maps', templateVars);
     })
 });
 
@@ -36,7 +36,7 @@ router.get('/:userId/favourite-maps', (req, res) => {
         user: req.cookies.user_id,
         maps
       }
-      res.render('index', templateVars);
+      res.render('maps', templateVars);
     })
 });
 
@@ -54,7 +54,6 @@ router.get('/login', (req, res) => {
  */
 router.get('/logout', (req, res) => {
   res.clearCookie('user_id');
-
   res.redirect('/maps');
 });
 
