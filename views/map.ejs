@@ -12,13 +12,14 @@
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- External css and javascript from leaflet -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-     crossorigin=""/>
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-     crossorigin=""></script>
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
@@ -42,11 +43,11 @@
         <input type="text" name="id" value="<%=favouriteMapId %>" hidden="true">
         <input type="text" name="user_id" value="<%=user %>" hidden="true">
         <input type="text" name="map_id" value="<%=map.id %>" hidden="true">
-        <button type="submit" class="btn btn-sm"><%= isFavouriteMap ? 'Remove from Favourites' : 'Add to Favourites' %> </button>     
+        <button type="submit" class="btn btn-sm"><i class="fa-solid fa-star"></i><%= isFavouriteMap ? 'Remove from Favourites' : 'Add to Favourites' %> </button>     
       </form> 
       <% if (map.user_id === user) { %>
       <form method="GET" action="/maps/new_part1">
-        <button type="submit" class="btn btn-sm">Edit Map</button>
+        <button type="submit" class="btn btn-sm"><i class="fa-solid fa-pencil"></i>Edit Map</button>
       </form> 
       <% } %> 
     </div>
@@ -65,11 +66,40 @@
   </footer>
   <!-- Leaflet JS to render map -->
   <script>
-    const map = L.map('mapCreate').setView([51.505, -0.09], 18);
+    const lat = '<%= lat %>';
+    const lon = '<%= lng %>';
+    const map = L.map('mapCreate').setView([lat, lon], 18);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
+    let markersToPlot = []
+    let i = 0
+    const markers = '<%- JSON.stringify(places) %>';
+    const parsedMarkers = JSON.parse(markers);
+    console.log(parsedMarkers)
+    for (const marker of parsedMarkers) {
+      const newMarker = new L.Marker([marker.latitude, marker.longitude]);
+      map.addLayer(newMarker);
+      if (!marker.photo_url && !marker.description) {
+        newMarker.bindPopup(`
+        <span>${marker.title}</span>
+        `)
+      } else if (!marker.photo_url) {
+        newMarker.bindPopup(`<span>${marker.title}</span><span>${marker.description}</span>`)
+      } else if (!marker.description) {
+        newMarker.bindPopup(`
+        <img src=${marker.photo_url} alt='popupText'>
+        <span>${marker.title}</span>
+        `)
+      } else {
+        newMarker.bindPopup(`
+        <img src=${marker.photo_url} alt='popupText'>
+        <span>${marker.title}</span><span>${marker.description}</span>
+        `)
+      }
+      
+    }
   </script>
   <!-- Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

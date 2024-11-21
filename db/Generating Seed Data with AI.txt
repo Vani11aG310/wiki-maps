@@ -4,7 +4,7 @@ userid_id is a number between 1 an 3.
 title is the name of the map.  The map name is a list of a favourite places, restaurants, or things to do in a Canadian city.
 address is the address of the area the map is covering.
 description is short description of the map.  It should not exceed 50 characters.
-photo_url is a link to https://picsum.photos/id/<id>/1024/768'. Replace <id> with a sequence number starting at 1.
+photo_url is a link to https://picsum.photos/id/<id>/300/200'. Replace <id> with a sequence number starting at 1.
 
 INSERT INTO maps 
 (user_id, title, address, description, photo_url) 

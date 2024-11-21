@@ -23,15 +23,21 @@ router.get('/new_part1', (req, res) => {
   res.render('maps_new_part1', { user: Number(req.cookies.user_id)})
 });
 
-
+// Rod
 router.get('/:id', (req, res) => {
   const mapId = req.params.id;
   const userId = Number(req.cookies.user_id);
-  const templateVars = {};
+  const templateVars = {
+    map: null,
+    lat: null,
+    lng: null,
+    places: null,
+    user: userId,
+  }
+
   mapQueries.getMapById(mapId)
     .then(map => {
-      templateVars.user = userId;
-      templateVars.map = map;
+       templateVars.map = map;
 
       return favouriteMapQueries.isFavouriteMap(userId, mapId)
     })
@@ -41,8 +47,21 @@ router.get('/:id', (req, res) => {
       templateVars.isFavouriteMap = isFavouriteMap;
       templateVars.favouriteMapId = favouriteMapId;
 
-console.log(templateVars);
-      return res.render('map', templateVars);      
+      const address = map.address;
+      const geocodeAPIURL = 'https://singlesearch.alk.com/NA/api/search?';
+      const options = {
+        authToken: process.env.GEOCODE_API,
+        query: address
+      }
+      needle.request('get', geocodeAPIURL, options, (request, response) => {
+        templateVars.lat = response.body.Locations[0].Coords.Lat;
+        templateVars.lng = response.body.Locations[0].Coords.Lon;
+        mapQueries.getPlacesByMap(mapId)
+          .then(places => {
+            templateVars.places = places;
+            res.render('map', templateVars);
+          })
+      })     
     })
     .catch(err => {
       res
@@ -50,6 +69,7 @@ console.log(templateVars);
         .json({ error: err.message });
     });
 });
+
 
 router.post('/', (req, res) => {
   const map = {
@@ -80,6 +100,7 @@ router.post('/', (req, res) => {
         .json({ error: err.message });
     });
 });
+
 // router.post('/', (req, res) => {
 //   const map = req.body;
 
