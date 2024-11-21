@@ -12,14 +12,14 @@
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- External css and javascript from leaflet -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-     crossorigin=""/>
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-     crossorigin=""></script>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
@@ -38,19 +38,25 @@
   </div>
 
   <div class="button_div">
-  <% if (user) { %>
-    <button type="submit" class="btn btn-sm"><i class="fa-solid fa-star"></i>Add to Favourites</button>
+    <% if (user) { %>
+      <button type="submit" class="btn btn-sm"><i class="fa-solid fa-star"></i>Add to Favourites</button>
 
-  <% } %>
+      <% } %>
 
-  <% if (map.user_id === user) { %>
-    <button type="submit" class="btn btn-sm"><i class="fa-solid fa-pencil"></i>Edit Map</button>
-    <% } %>
+        <% if (map.user_id===user) { %>
+          <button type="submit" class="btn btn-sm"><i class="fa-solid fa-pencil"></i>Edit Map</button>
+          <% } %>
   </div>
   <main class="container">
-    <h5 class="map_title"><%= map.title %></h5>
-    <h6 class="map_owner"><%= 'Map Owner: ' + map.owner_name + ' (' + map.user_id + ') Current User: ' + user %></h6>
-    <p class="map_description"><%= map.description %></p>
+    <h5 class="map_title">
+      <%= map.title %>
+    </h5>
+    <h6 class="map_owner">
+      <%= 'Map Owner: ' + map.owner_name + ' (' + map.user_id + ') Current User: ' + user %>
+    </h6>
+    <p class="map_description">
+      <%= map.description %>
+    </p>
   </main>
 
   <footer>
@@ -61,7 +67,7 @@
     const map = L.map('mapCreate').setView([51.505, -0.09], 18);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
   </script>
   <!-- Bootstrap JS -->
