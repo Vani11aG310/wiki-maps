@@ -48,11 +48,23 @@
   </footer>
   <!-- Leaflet JS to render map -->
   <script>
-    const map = L.map('mapCreate').setView([51.505, -0.09], 18);
+    const lat = '<%= lat %>';
+    const lon = '<%= lng %>';
+    const map = L.map('mapCreate').setView([lat, lon], 18);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
+    let markersToPlot = []
+    let i = 0
+    const markers = '<%- JSON.stringify(places) %>';
+    const parsedMarkers = JSON.parse(markers);
+    console.log(parsedMarkers)
+    for (const marker of parsedMarkers) {
+      const newMarker = new L.Marker([marker.latitude, marker.longitude]);
+      map.addLayer(newMarker);
+      newMarker.bindPopup(`<div>${marker.title}</div>`)
+    }
   </script>
   <!-- Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
