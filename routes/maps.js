@@ -1,8 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const mapQueries = require('../db/queries/maps');
-
-
+const favouriteMapQueries = require('../db/queries/favourite-maps');
 const needle = require('needle');
 const cookieParser = require('cookie-parser');
 
@@ -27,13 +26,20 @@ router.get('/new_part1', (req, res) => {
 
 router.get('/:id', (req, res) => {
   const mapId = req.params.id;
+  const userId = Number(req.cookies.user_id);
+  const templateVars = {};
   mapQueries.getMapById(mapId)
     .then(map => {
-      const templateVars = {
-        user: Number(req.cookies.user_id),
-        map
-      };
-      return res.render('map', templateVars);
+      templateVars.user = userId;
+      templateVars.map = map;
+
+      return favouriteMapQueries.isFavouriteMap(userId, mapId)
+    })
+    .then(favouriteMap => {
+      const isFavouriteMap = favouriteMap ? true : false
+      templateVars.map.isFavouriteMap = isFavouriteMap;
+
+      return res.render('map', templateVars);      
     })
     .catch(err => {
       res
