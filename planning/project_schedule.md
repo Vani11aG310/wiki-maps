@@ -25,7 +25,7 @@
   - ~~Modifiy Places on Map~~
   - ~~Maps for a specific User~~
   - ~~Favourite Maps for a specific User~~
-  - Save Favourites / Remove Favourite
+  - ~~Save Favourites / Remove Favourite~~
 - ~~All Maps (Logged in and Not Logged in)~~
 - ~~Logged in Maps~~
 - ~~Favourite Maps~~
