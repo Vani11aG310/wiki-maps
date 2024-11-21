@@ -44,7 +44,9 @@
       <% } %>
 
         <% if (map.user_id===user) { %>
-          <button type="submit" class="btn btn-sm"><i class="fa-solid fa-pencil"></i>Edit Map</button>
+          <form action="/maps/<%= user %>/update" method="GET">
+            <button type="submit" class="btn btn-sm"><i class="fa-solid fa-pencil"></i>Edit Map</button>
+          </form>
           <% } %>
   </div>
   <main class="container">
