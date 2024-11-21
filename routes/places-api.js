@@ -35,17 +35,29 @@ placeQueries.getPlaceById(placeId)
 });
 
 router.post('/', (req, res) => {
-  const place = req.body;
+  const body = req.body.placesObject;
+  const parsedBody= JSON.parse(body);
+  console.log(parsedBody);
+  
+  const placesObject = {}
 
-  placeQueries.addPlace(place)
-    .then(place => {
-      res.json({ place });
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
+  for (let i = 0; i < parsedBody.length; i++) {
+    const place = {
+      map_id: req.cookies.map_id,
+      title: parsedBody[i].title,
+      latitude: parsedBody[i].lat,
+      longitude: parsedBody[i].lng
+    }
+    placeQueries.addPlace(place)
+      .then(place => {
+        res.json(place)
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  } 
 });
 
 router.post('/:id/delete', (req, res) => {

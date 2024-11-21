@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
 
 
 router.get('/new_part1', (req, res) => {
-  res.render('maps_new_part1')
+  res.render('maps_new_part1', { user: req.cookies.user_id})
 });
 
 router.get('/:id', (req, res) => {
@@ -47,6 +47,35 @@ router.get('/:id', (req, res) => {
       });
 });
 
+router.post('/', (req, res) => {
+  const map = {
+    user_id: req.cookies.user_id,
+    title: req.body.mapTitle,
+    address: req.body.mapAddress,
+    description: req.body.mapDescription,
+    photo_url: req.body.mapPhoto
+  }
+  console.log(map)
+
+  mapQueries.addMap(map)
+    .then(map => {
+      res.cookie('map_id', map.id)
+      const address = map.address;
+      const geocodeAPIURL = 'https://singlesearch.alk.com/NA/api/search?';
+      const options = {
+        authToken: process.env.GEOCODE_API,
+        query: address
+      }
+      needle.request('get', geocodeAPIURL, options, (req, response) => {
+        res.render('maps_new_part2', { lat: response.body.Locations[0].Coords.Lat, long: response.body.Locations[0].Coords.Lon, user: map.user_id })
+      })
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
 // router.post('/', (req, res) => {
 //   const map = req.body;
 
@@ -68,35 +97,6 @@ router.get('/:id', (req, res) => {
 //   res.render('maps_new_part2')
 // })
 
-router.post('/', (req, res) => {
-  const map = {
-    user_id: req.cookies.user_id,
-    title: req.body.mapTitle,
-    address: req.body.mapAddress,
-    description: req.body.mapDescription,
-    photo_url: req.body.mapPhoto
-  }
-  console.log(map)
-
-  mapQueries.addMap(map)
-    .then(map => {
-      res.cookie('map_id', map.id)
-      const address = map.address;
-      const geocodeAPIURL = 'https://singlesearch.alk.com/NA/api/search?';
-      const options = {
-        authToken: process.env.GEOCODE_API,
-        query: address
-      }
-      needle.request('get', geocodeAPIURL, options, (req, response) => {
-        res.render('maps_new_part2', { lat: response.body.Locations[0].Coords.Lat, long: response.body.Locations[0].Coords.Lon })
-      })
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
-});
 
 // router.post('/:id/delete', (req, res) => {
 //   const mapId = req.params.id;
