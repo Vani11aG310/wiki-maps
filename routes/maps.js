@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
 
 
 router.get('/new_part1', (req, res) => {
-  res.render('maps_new_part1')
+  res.render('maps_new_part1', { user: req.cookies.user_id})
 });
 
 router.get('/:id', (req, res) => {
@@ -43,27 +43,6 @@ router.get('/:id', (req, res) => {
         .json({ error: err.message });
     });
 });
-
-// router.post('/', (req, res) => {
-//   const map = req.body;
-
-//   mapQueries.addMap(map)
-//     .then(map => {
-//       res.json({ map });
-//     })
-//     .catch(err => {
-//       res
-//         .status(500)
-//         .json({ error: err.message });
-//     });
-// });
-
-
-// router.get('/new_part2', (req, res) => {
-//   const address = req.body.mapAddress
-//   console.log(address)
-//   res.render('maps_new_part2')
-// })
 
 router.post('/', (req, res) => {
   const map = {
@@ -85,7 +64,7 @@ router.post('/', (req, res) => {
         query: address
       }
       needle.request('get', geocodeAPIURL, options, (req, response) => {
-        res.render('maps_new_part2', { lat: response.body.Locations[0].Coords.Lat, long: response.body.Locations[0].Coords.Lon })
+        res.render('maps_new_part2', { lat: response.body.Locations[0].Coords.Lat, long: response.body.Locations[0].Coords.Lon, user: map.user_id })
       })
     })
     .catch(err => {
@@ -94,6 +73,27 @@ router.post('/', (req, res) => {
         .json({ error: err.message });
     });
 });
+// router.post('/', (req, res) => {
+//   const map = req.body;
+
+//   mapQueries.addMap(map)
+//     .then(map => {
+//       res.json({ map });
+//     })
+//     .catch(err => {
+//       res
+//         .status(500)
+//         .json({ error: err.message });
+//     });
+// });
+
+
+// router.get('/new_part2', (req, res) => {
+//   const address = req.body.mapAddress
+//   console.log(address)
+//   res.render('maps_new_part2')
+// })
+
 
 // router.post('/:id/delete', (req, res) => {
 //   const mapId = req.params.id;
