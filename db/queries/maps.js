@@ -3,11 +3,11 @@ const db = require('../connection');
 const getMaps = () => {
   const queryString = `
   SELECT m.*, 
-  u.name as user_name
+  u.name as owner_name
   FROM maps m
   JOIN users u
   ON u.id = m.user_id
-  ORDER by lower(u.name), lower(m.title);`;
+  ORDER by lower(m.title);`;
 
   return db.query(queryString)
     .then(data => {
@@ -18,12 +18,12 @@ const getMaps = () => {
 const getMapById = (id) => {
   const queryString = `
   SELECT m.*, 
-  u.name as user_name
+  u.name as owner_name
   FROM maps m
   JOIN users u
   ON u.id = m.user_id
   WHERE m.id = $1
-  ORDER by lower(u.name), lower(m.title);`;
+  ORDER by lower(m.title);`;
 
   const queryParams = [id];
 
@@ -98,7 +98,7 @@ const deleteMap = (id) => {
 const getPlacesByMap = (id) => {
   const queryString = `
   SELECT p.*, 
-  u.name as user_name,
+  u.name as owner_name,
   m.title as map_title
   FROM places p
   JOIN maps m
@@ -106,7 +106,7 @@ const getPlacesByMap = (id) => {
   JOIN users u
   ON u.id = m.user_id
   WHERE m.id = $1
-  ORDER by lower(u.name), lower(m.title), p.title;`;
+  ORDER by lower(m.title), p.title;`;
 
   const queryParams = [id];
 

@@ -4,13 +4,13 @@ const getPlaces = () => {
   const queryString = `
   SELECT p.*, 
   m.title as map_title,
-  u.name as user_name
+  u.name as owner_name
   FROM places p
   JOIN maps m
   ON m.id = p.map_id
   JOIN users u
   ON u.id = m.user_id
-  ORDER by lower(u.name), lower(m.title), p.title;`;
+  ORDER by lower(m.title), p.title;`;
 
   return db.query(queryString)
     .then(data => {
@@ -22,14 +22,14 @@ const getPlaceById = (id) => {
   const queryString = `
   SELECT p.*, 
   m.title as map_title,
-  u.name as user_name
+  u.name as owner_name
   FROM places p
   JOIN maps m
   ON m.id = p.map_id
   JOIN users u
   ON u.id = m.user_id
   WHERE p.id = $1
-  ORDER by lower(u.name), lower(m.title), p.title;`;
+  ORDER by lower(m.title), p.title;`;
 
   const queryParams = [id];
 
