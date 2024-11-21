@@ -89,7 +89,7 @@ const deleteUser = (id) => {
 const getMapsByUser = (userId) => {
   const queryString = `
   SELECT m.*,
-  u.name as user_name,
+  u.name as owner_name,
   case when fm.id is NULL THEN false ELSE true END as is_favourite
   FROM maps m
   JOIN users u
@@ -98,7 +98,7 @@ const getMapsByUser = (userId) => {
   ON fm.map_id = m.id
   AND fm.user_id = u.id
   WHERE m.user_id = $1
-  ORDER by lower(u.name), lower(m.title);`;
+  ORDER by lower(m.title);`;
 
   const queryParams = [userId];
 
@@ -111,11 +111,9 @@ const getMapsByUser = (userId) => {
 const getFavouriteMapsByUser = (userId) => {
   const queryString = `
   SELECT m.*,
-  u.id as user_id,
-  u.name as user_name,
-  o.id as owner_id,
   o.name as owner_name,
-  m.title as map_title
+  u.id as user_id,
+  u.name as user_name
   FROM favourite_maps fm
   JOIN maps m
   ON m.id = fm.map_id
@@ -124,7 +122,7 @@ const getFavouriteMapsByUser = (userId) => {
   JOIN users o    -- Owner of the Map
   ON o.id = m.user_id
   WHERE fm.user_id = $1
-  ORDER by lower(o.name), lower(m.title);`;
+  ORDER by lower(m.title);`;
 
   const queryParams = [userId];
 
