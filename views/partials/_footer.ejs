@@ -4,7 +4,7 @@
 
       <% if (user) { %>
         <form method="GET" action="/maps">
-          <button type="submit" class="btn">Profile</button>
+          <button type="submit" class="btn">All Maps</button>
         </form>
         <form method="GET" action="/maps">
           <button type="submit" class="btn">My Maps</button>
@@ -12,5 +12,12 @@
         <form method="GET" action="/maps">
           <button type="submit" class="btn">My Favourites</button>
         </form>
+        <form method="GET" action="/maps">
+          <button type="submit" class="btn">Create a Map</button>
+        </form>
+        <% } else { %>
+          <form method="GET" action="/maps">
+            <button type="" class="btn"></button>
+          </form>
         <% } %>
 </footer>

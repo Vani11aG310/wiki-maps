@@ -1,13 +1,16 @@
 const db = require('../connection');
 
-const getMaps = () => {
+const getPlaces = () => {
   const queryString = `
-  SELECT m.*, 
+  SELECT p.*, 
+  m.title as map_title,
   u.name as user_name
-  FROM maps m
+  FROM places p
+  JOIN maps m
+  ON m.id = p.map_id
   JOIN users u
   ON u.id = m.user_id
-  ORDER by lower(u.name), lower(m.title);`;
+  ORDER by lower(u.name), lower(m.title), p.title;`;
 
   return db.query(queryString)
     .then(data => {
@@ -15,15 +18,18 @@ const getMaps = () => {
     });
 };
 
-const getMapById = (id) => {
+const getPlaceById = (id) => {
   const queryString = `
-  SELECT m.*, 
+  SELECT p.*, 
+  m.title as map_title,
   u.name as user_name
-  FROM maps m
+  FROM places p
+  JOIN maps m
+  ON m.id = p.map_id
   JOIN users u
   ON u.id = m.user_id
-  WHERE m.id = $1
-  ORDER by lower(u.name), lower(m.title);`;
+  WHERE p.id = $1
+  ORDER by lower(u.name), lower(m.title), p.title;`;
 
   const queryParams = [id];
 
@@ -33,39 +39,41 @@ const getMapById = (id) => {
     });
 };
 
-const addMap = (map) => {
+const addPlace = (place) => {
   const queryString = `
-  INSERT INTO maps
-  (user_id, title, address, description, photo_url)
+  INSERT INTO places
+  (map_id, title, latitude, longitude, description, photo_url)
   VALUES 
-  ($1, $2, $3, $4, $5)
+  ($1, $2, $3, $4, $5, $6)
   RETURNING *;
   `;
 
-  const queryParams = [map.user_id, map.title, map.address, map.description, map.photo_url];
+  const queryParams = [place.map_id, place.title, place.latitude, place.longitude, place.description, place.photo_url];
 
   return db.query(queryString, queryParams)
     .then((result) => {
       return result.rows[0];
     })
     .catch((err) => {
+      console.log(err.message);
       return err.message;
     });
 };
 
-const updateMap = (map) => {
+const updatePlace = (place) => {
   const queryString = `
-  UPDATE maps
-  SET user_id = $2,
+  UPDATE places
+  SET map_id = $2,
   title = $3,
-  address = $4
-  description = $5,
-  photo_url = $6
+  latitude = $4,
+  longitude = $5,
+  description = $6,
+  photo_url = $7
   WHERE id = $1
   RETURNING *;
   `;
 
-  const queryParams = [map.id, map.user_id, map.title, map.address, map.description, map.photo_url];
+  const queryParams = [place.id, place.map_id, place.title, place.latitude, place.longitude, place.description, place.photo_url];
 
   return db.query(queryString, queryParams)
     .then((result) => {
@@ -76,10 +84,10 @@ const updateMap = (map) => {
     });
 };
 
-const deleteMap = (id) => {
+const deletePlace = (id) => {
   const queryString = `
   DELETE 
-  FROM maps
+  FROM places
   WHERE id = $1
   RETURNING *;
   `;
@@ -92,36 +100,14 @@ const deleteMap = (id) => {
     })
     .catch((err) => {
       return err.message;
-    });
-};
-
-const getPlacesByMap = (id) => {
-  const queryString = `
-  SELECT p.*, 
-  u.name as user_name,
-  m.title as map_title
-  FROM places p
-  JOIN maps m
-  ON m.id = p.map_id
-  JOIN users u
-  ON u.id = m.user_id
-  WHERE m.id = $1
-  ORDER by lower(u.name), lower(m.title), p.title;`;
-
-  const queryParams = [id];
-
-  return db.query(queryString, queryParams)
-    .then((response) => {
-      return response.rows;
     });
 };
 
 module.exports = {
-  getMaps,
-  getMapById,
-  addMap,
-  updateMap,
-  deleteMap,
-  getPlacesByMap,
+  getPlaces,
+  getPlaceById,
+  addPlace,
+  updatePlace,
+  deletePlace,
 };
 
