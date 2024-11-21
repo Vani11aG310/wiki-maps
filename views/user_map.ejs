@@ -42,15 +42,14 @@
   </div>
   <% } %>
 
-  <% if (map.user_id == user) { %>
+  <% if (map.user_id === user) { %>
   <div class="button_div">
     <button type="submit" class="btn btn-sm">Edit Map</button>
   </div>
   <% } %>
   <main class="container">
     <h5 class="map_title"><%= map.title %></h5>
-    <h6 class="map_title"><%= 'Map Owner: ' + map.owner_name + ' (' + map.user_id + ')' %></h6>
-    <h6 class="map_title"><%= 'Current User: ' + user %></h6>
+    <h6 class="map_owner"><%= 'Map Owner: ' + map.owner_name + ' (' + map.user_id + ') Current User: ' + user %></h6>
     <p class="map_description"><%= map.description %></p>
   </main>
 
