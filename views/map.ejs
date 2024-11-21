@@ -19,6 +19,7 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
      crossorigin=""></script>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
@@ -38,12 +39,12 @@
 
   <div class="button_div">
   <% if (user) { %>
-    <button type="submit" class="btn btn-sm">Add to Favourites</button>
+    <button type="submit" class="btn btn-sm"><i class="fa-solid fa-star"></i>Add to Favourites</button>
 
   <% } %>
 
   <% if (map.user_id === user) { %>
-    <button type="submit" class="btn btn-sm">Edit Map</button>
+    <button type="submit" class="btn btn-sm"><i class="fa-solid fa-pencil"></i>Edit Map</button>
     <% } %>
   </div>
   <main class="container">
