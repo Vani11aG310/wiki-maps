@@ -30,21 +30,18 @@ router.get('/new_part1', (req, res) => {
 router.get('/:id', (req, res) => {
   const mapId = req.params.id;
   mapQueries.getMapById(mapId)
-  .then(map => {
-    const templateVars = {
-      user: req.cookies.user_id,
-      map
-    };
-    if (req.cookies.user_id) {
+    .then(map => {
+      const templateVars = {
+        user: req.cookies.user_id,
+        map
+      };
       return res.render('user_map', templateVars);
-    }
-    res.render('map', templateVars);
     })
     .catch(err => {
       res
         .status(500)
         .json({ error: err.message });
-      });
+    });
 });
 
 // router.post('/', (req, res) => {

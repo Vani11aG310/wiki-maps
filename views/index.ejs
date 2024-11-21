@@ -28,7 +28,7 @@
   <div class="card" style="width: 95%;">
     <img src=<%= map.photo_url %> class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title"><%= map.title %></h5>
+      <h5 class="card-title"><%= map.title + ' (' + map.owner_name + ')' %></h5>
       <p class="card-text"><%= map.description %></p>
       <form method="GET" action="/maps/<%= map.id %>">
       <button type="submit" class="btn btn-primary btn-sm">View Map</button>
