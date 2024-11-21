@@ -34,10 +34,12 @@ router.get('/:id', (req, res) => {
     places: null,
     user: userId,
   }
+  let address = null;
 
   mapQueries.getMapById(mapId)
     .then(map => {
        templateVars.map = map;
+       address = map.address;
 
       return favouriteMapQueries.isFavouriteMap(userId, mapId)
     })
@@ -47,7 +49,6 @@ router.get('/:id', (req, res) => {
       templateVars.isFavouriteMap = isFavouriteMap;
       templateVars.favouriteMapId = favouriteMapId;
 
-      const address = map.address;
       const geocodeAPIURL = 'https://singlesearch.alk.com/NA/api/search?';
       const options = {
         authToken: process.env.GEOCODE_API,
