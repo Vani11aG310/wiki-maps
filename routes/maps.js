@@ -47,27 +47,6 @@ router.get('/:id', (req, res) => {
       });
 });
 
-// router.post('/', (req, res) => {
-//   const map = req.body;
-
-//   mapQueries.addMap(map)
-//     .then(map => {
-//       res.json({ map });
-//     })
-//     .catch(err => {
-//       res
-//         .status(500)
-//         .json({ error: err.message });
-//     });
-// });
-
-
-// router.get('/new_part2', (req, res) => {
-//   const address = req.body.mapAddress
-//   console.log(address)
-//   res.render('maps_new_part2')
-// })
-
 router.post('/', (req, res) => {
   const map = {
     user_id: req.cookies.user_id,
@@ -97,6 +76,27 @@ router.post('/', (req, res) => {
         .json({ error: err.message });
     });
 });
+// router.post('/', (req, res) => {
+//   const map = req.body;
+
+//   mapQueries.addMap(map)
+//     .then(map => {
+//       res.json({ map });
+//     })
+//     .catch(err => {
+//       res
+//         .status(500)
+//         .json({ error: err.message });
+//     });
+// });
+
+
+// router.get('/new_part2', (req, res) => {
+//   const address = req.body.mapAddress
+//   console.log(address)
+//   res.render('maps_new_part2')
+// })
+
 
 // router.post('/:id/delete', (req, res) => {
 //   const mapId = req.params.id;
