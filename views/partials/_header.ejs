@@ -2,19 +2,16 @@
   <nav class="navbar fixed-top navbar-expand-xl bg-secondary">
     <div class="container-fluid">
 
-    </div>
-    <a class="navbar-brand">Wiki Maps</a>
-    <% if (user) { %>
-      <form method="POST" action="/logout">
-        <button type="submit" class="btn btn-sm">Logout</button>
-      </form>
-      <%} else { %>
-        <form method="GET" action="/login">
+      <a class="navbar-brand">Wiki Maps</a>
+      <% if (user) { %>
+        <form method="GET" action="/users/logout">
+          <button type="submit" class="btn btn-sm">Logout</button>
+        </form>
+      <% } else { %>
+        <form method="GET" action="/users/login">
           <button type="submit" class="btn btn-sm">Login</button>
         </form>
-        <!-- <form method="GET" action="/register">
-          <button type="submit" class="btn btn-sm">Sign up</button>
-        </form> -->
-        <%}%>
+      <%} %>
+    </div>
   </nav>
 </header>

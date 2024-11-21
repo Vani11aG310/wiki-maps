@@ -45,12 +45,7 @@ app.use('/users', usersRoutes);
 app.use('/maps', mapsRoutes);
 
 // Home page
-// Warning: avoid creating more routes in this file!
-// Separate them into separate routes files (see above).
-
-//plain text cookie, comment in to activate
 app.get('/', (req, res) => {
-  res.cookie('user_id', '3');
   res.redirect('/maps');
 });
 

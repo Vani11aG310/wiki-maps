@@ -30,17 +30,21 @@
 - ~~Logged in Maps~~
 - ~~Favourite Maps~~
 - ~~Save Places~~
-- Add a Map
-- Dispay places on a Map
+- ~~Add a Map~~
+- Display places on a Map
+- EJS file cleanup
 - Map Details
   - If logged in, user can favourite map
   - If logged in and owns map, use can edit
-- Toggle Logged In /Not Logged In User
+- Favourite Map functionality
+- Beautifcation of the app
+- ~~Toggle Logged In /Not Logged In User~~
 - Fit and Finish
   - Remove View Map button. Replace with hyperlink on Map Title and image.
   - Display Counter for number of maps (e.g. 1/30)
   - Icons for Nav Footer bar
   - Icon for "Add to Favourites"
+  - Improve editing/deleting places
 
 ## Thursday
 - Practice Demo
