@@ -1,5 +1,3 @@
-
-
 const express = require('express');
 const router  = express.Router();
 const mapQueries = require('../db/queries/maps');
@@ -14,18 +12,18 @@ router.get('/', (req, res) => {
     mapQueries.getMaps()
       .then(maps => {
         const templateVars = {
-          user: req.cookies.user_id,
+          user: Number(req.cookies.user_id),
           maps
         }
-        res.render('index', templateVars);
+        res.render('maps', templateVars);
       })
 });
 
 
-
 router.get('/new_part1', (req, res) => {
-  res.render('maps_new_part1', { user: req.cookies.user_id})
+  res.render('maps_new_part1', { user: Number(req.cookies.user_id)})
 });
+
 
 router.get('/:id', (req, res) => {
   const mapId = req.params.id;
@@ -64,7 +62,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   const map = {
-    user_id: req.cookies.user_id,
+    user_id: Number(req.cookies.user_id),
     title: req.body.mapTitle,
     address: req.body.mapAddress,
     description: req.body.mapDescription,
