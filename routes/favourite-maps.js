@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const mapQueries = require('../db/queries/maps');
 const favouriteMapQueries = require('../db/queries/favourite-maps');
-const cookieParser = require('cookie-parser');
 
-router.post('/', (req, res) => {
+
+router.post('/toggle', (req, res) => {
   const id = req.body.id;
   const userId = req.body.user_id;
   const mapId = req.body.map_id;
