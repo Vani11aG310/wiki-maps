@@ -36,6 +36,43 @@ router.post('/:id/delete', (req, res) => {
     });
 });
 
+
+router.post('/toggle', (req, res) => {
+  const id = req.body.id;
+  const userId = req.body.user_id;
+  const mapId = req.body.map_id;
+  const favouriteMap = {
+    id: id,
+    user_id: userId,
+    map_id: mapId,
+  }
+
+  // If the Map is marked as a favourite, remove it.
+  // Otherwise, add it to the favourites.
+  if (id) {
+    favouriteMapQueries.deleteFavouriteMap(id)
+      .then(favouriteMap => {
+        res.json({ favouriteMap });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  } else {
+    favouriteMapQueries.addFavouriteMap(favouriteMap)
+      .then(favouriteMap => {
+        res.json({ favouriteMap });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+    }
+});
+
+
 router.post('/:id', (req, res) => {
   const favouriteMap = req.body;
   favouriteMap.id = req.params.id
