@@ -1,0 +1,23 @@
+<footer>
+  <nav class="navbar fixed-bottom bg-secondary">
+    <div class="container-fluid">
+
+      <% if (user) { %>
+        <form method="GET" action="/maps">
+          <button type="submit" class="btn btn-sm">All Maps <i class="fa-solid fa-globe"></i></button>
+        </form>
+        <form method="GET" action="/users/:userId/maps">
+          <button type="submit" class="btn btn-sm">My Maps <i class="fa-solid fa-map-location-dot"></i></button>
+        </form>
+        <form method="GET" action="/users/:userId/favourite-maps">
+          <button type="submit" class="btn btn-sm">My Favourites <i class="fa-solid fa-star"></i></button>
+        </form>
+        <form method="GET" action="/maps/new_part1">
+          <button type="submit" class="btn btn-sm">Create a Map <i class="fa-solid fa-map-pin"></i></button>
+          <% } else { %>
+            <form method="GET" action="/maps">
+              <button type="submit" class="btn btn-sm">All Maps <i class="fa-solid fa-globe"></i></button>
+            </form>
+            <% } %>
+
+</footer>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <!-- External css and javascript from leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+     <link rel="stylesheet" href="/styles/layout.css" />
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Create a new map!</title>
+</head>
+<body>
+  <header>
+    <%- include('partials/_header') %>
+  </header>
+  <main style="margin: 1em;">
+    <div id="mapCreate" style="height: 400px; width: 100%;">
+    </div>
+    <form action="/api/places" method="POST">
+      <input type="text" id="places_input" name="placesObject" hidden="true">
+      <button type="submit" class="btn btn-outline-secondary">Submit Map</button>
+    </form>
+
+  </main>
+  <footer>
+    <%- include('partials/_footer') %>
+  </footer>
+  </script>
+  <!-- Leaflet JS to render map -->
+  <script>
+    const lat = '<%= lat %>';
+    const lon = '<%= long %>';
+    const map = L.map('mapCreate').setView([lat, lon], 13);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+    let markers = [];
+    let markerTitle;
+    let markerDescription;
+    let markerImage;
+    function onMapClick(e) {
+      const marker = new L.Marker(e.latlng);
+      map.addLayer(marker);
+      console.log(markers)
+      marker.bindPopup(`
+      <div><input type='text' value='Enter a title' class='title-box'/></div>
+      <div><input type='text' value='Enter a description' class='description-box'/></div>
+      <div><input type='text' value='Enter a photo url' class='photo-box'/></div>
+      <div><input type=button value='Delete this marker' class='delete-marker-button' /></div>`
+      );
+      marker.on("popupopen", onPopupOpen);
+      return marker;
+    }
+    function onPopupOpen() {
+      let markerObject = {
+        title: null,
+        lat: null,
+        lng: null,
+        photo_url: null,
+        description: null
+      };
+      const tempMarker = this;
+      $(".title-box").keypress(function (e) {
+        markerImage = $(".photo-box").val();
+        let key = e.which;
+        if (key === 13) {
+          if (!$(".photo-box").val() && !$(".description-box").val()) {
+            tempMarker.bindPopup(`
+            <div id='title'>${$(".title-box").val()}</div>
+            <div><input type=button value='Delete this marker' class='delete-marker-button' /></div>
+            `)
+          } else if (!$(".photo-box").val()) {
+            tempMarker.bindPopup(`
+            <div id='title'>${$(".title-box").val()}</div>
+            <div id='description'>${$(".description-box").val()}</div>
+            <div><input type=button value='Delete this marker' class='delete-marker-button' /></div>
+            `)
+          } else if (!$(".description-box").val()) {
+            tempMarker.bindPopup(`
+            <div><img src=${$(".photo-box").val()} alt='popupText'></div>
+            <div id='title'>${$(".title-box").val()}</div>
+            <div><input type=button value='Delete this marker' class='delete-marker-button' /></div>
+            `)
+          } else {
+            tempMarker.bindPopup(`
+            <div><img src=${$(".photo-box").val()} alt='popupText'></div>
+            <div id='title'>${$(".title-box").val()}</div>
+            <div id='description'>${$(".description-box").val()}</div>
+            <div><input type=button value='Delete this marker' class='delete-marker-button' /></div>
+            `)
+          }
+          markerTitle = $('#title').text();
+          markerDescription = $('#description').text();
+          markerObject.title = markerTitle;
+          markerObject.description = markerDescription;
+          markerObject.photo_url = markerImage;
+          markerObject.lat = tempMarker.getLatLng().lat;
+          markerObject.lng = tempMarker.getLatLng().lng;
+          markers.push(markerObject);
+          console.log(markers);
+        }
+      })
+      $('.delete-marker-button:visible').click(function () {
+        markers.pop()
+        map.removeLayer(tempMarker);
+      })
+    }
+    map.on('click', onMapClick);
+    $('.btn-outline-secondary').on('click', () => {
+      const jsonMarkers = JSON.stringify(markers)
+      $('#places_input').val(JSON.stringify(markers));
+    })
+  </script>
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+</html>

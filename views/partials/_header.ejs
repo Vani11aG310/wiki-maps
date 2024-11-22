@@ -1,0 +1,17 @@
+<header>
+  <nav class="navbar fixed-top navbar-expand-xl bg-secondary">
+    <div class="container-fluid">
+
+      <a class="navbar-brand" href="/maps">Wiki Maps</a>
+      <% if (user) { %>
+        <form method="GET" action="/users/logout">
+          <button type="submit" class="btn btn-sm">Logout</button>
+        </form>
+      <% } else { %>
+        <form method="GET" action="/users/login">
+          <button type="submit" class="btn btn-sm">Login</button>
+        </form>
+      <%} %>
+    </div>
+  </nav>
+</header>

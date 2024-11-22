@@ -1,48 +1,44 @@
 ### Routes that we will need for our application
 
-## Map routes
+## User routes (Completed)
 
-* CREATE:       POST /maps 
-* READ:         GET  /maps
-  (Single Map)  GET  /maps/:id
-* UPDATE:       POST /maps/:id
-* DELETE:       POST /maps/:id/delete (Stretch goal, Out of scope)
+* CREATE:          POST /api/users
+* READ:            GET  /api/users
+* (Single User)    GET  /api/users/:id
+* UPDATE:          POST /api/users/:id
+* DELETE:          POST /api/users/:id/delete
+* Maps for a User: GET  /api/users/:id/maps
+* Favourite Maps for a User: GET  /api/users/:id/favourite-maps
 
-## User routes
+## Map routes (Completed)
 
-* CREATE:   POST /users
-* READ:     GET  /users/:id
-* UPDATE:   POST /users/:id
-* DELETE:   POST /users/:id/delete (Stretch goal, Out of scope)
+* CREATE:           POST /api/maps
+* READ:             GET  /api/maps
+* (Single Map)      GET  /api/maps/:id
+* UPDATE:           POST /api/maps/:id
+* DELETE:           POST /api/maps/:id/delete
+* Places for a Map  GET  /api/maps/:id/places
 
 ## Favourite maps routes Option 1
 
-* CREATE:   POST /users/:user_id/favourite_maps
-* READ:     GET  /users/:user_id/favourite_maps
-(Single map)GET  /users/:user_id/favourite_maps/:map_id
-* UPDATE:   POST /users/:user_id/favourite_maps/:map_id
-* DELETE:   POST /users/:user_id/favourite_maps/:map_id/delete (Stretch goal, Out of scope)
+* CREATE:      POST /api/users/:user_id/favourite_maps
+* READ:        GET  /api/users/:user_id/favourite_maps
+* (Single Map) GET  /api/users/:user_id/favourite_maps/:map_id
+* UPDATE:      POST /api/users/:user_id/favourite_maps/:map_id
+* DELETE:      POST /api/users/:user_id/favourite_maps/:map_id/delete (Stretch goal, Out of scope)
 
 ## Favourite maps routes Option 2
 
-* CREATE:   POST /favourite_maps
-* READ:     GET  /favourite_maps
-(Single map)GET  /favourite_maps/:map_id
-* UPDATE:   POST /favourite_maps/:map_id
-* DELETE:   POST /favourite_maps/:map_id/delete (Stretch goal, Out of scope)
+* CREATE:      POST /api/favourite_maps
+* READ:        GET  /api/favourite_maps
+* (Single Map) GET  /api/favourite_maps/:map_id
+* UPDATE:      POST /api/favourite_maps/:map_id
+* DELETE:      POST /api/favourite_maps/:map_id/delete (Stretch goal, Out of scope)
 
 ## Marker/places/destination routes
 
-* CREATE: POST /places
-* READ:   GET  /places
-          GET  /places/:id
-* UPDATE: POST /places/:id
-* DELETE: POST /places/:id/delete
-
-## Comments routes (Stretch)
-
-* CREATE: POST /comments
-* READ:   GET  /comments
-          GET  /comments/:id
-* UPDATE: POST /comments/:id
-* DELETE: POST /comments/:id/delete
+* CREATE:        POST /api/places
+* READ:          GET  /api/places
+* (Single Place) GET  /api/places/:id
+* UPDATE:        POST /api/places/:id
+* DELETE:        POST /api/places/:id/delete

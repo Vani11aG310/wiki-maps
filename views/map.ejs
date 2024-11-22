@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- External css and javascript from leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script defer src="/scripts/app.js"></script>
+  <title>Wiki Maps</title>
+</head>
+
+<body>
+  <header>
+    <%- include('partials/_header') %>
+  </header>
+
+  <div id="mapCreate" style="height: 400px; width: 100%;">
+  </div>
+
+  <% if (user) { %>  
+    <div class="button_div">
+      <form method="POST" action="/favourite-maps/toggle">
+        <input type="text" name="id" value="<%=favouriteMapId %>" hidden="true">
+        <input type="text" name="user_id" value="<%=user %>" hidden="true">
+        <input type="text" name="map_id" value="<%=map.id %>" hidden="true">
+        <button type="submit" class="btn btn-sm"><i class="fa-solid fa-star"></i><%= isFavouriteMap ? 'Remove from Favourites' : 'Add to Favourites' %> </button>     
+      </form> 
+      <% if (map.user_id === user) { %>
+      <form method="GET" action="/maps/new_part1">
+        <button type="submit" class="btn btn-sm"><i class="fa-solid fa-pencil"></i>Edit Map</button>
+      </form> 
+      <% } %> 
+    </div>
+   <% } %>
+
+  <main class="container">
+    <h5 class="map_title"><%= map.title %></h5>
+    <!-- Add the lines above for debugging -->
+    <!-- <h6 class="map_id"><%= 'Map Id: ' + map.id %></h6>
+    <h6 class="map_favourite"><%= 'Is Favourite: ' + isFavouriteMap %></h6>
+    <h6 class="map_owner"><%= 'Map Owner Id: ' + map.user_id + ' Current User Id: ' + user %></h6> -->
+    <!-- Add the lines above for debugging -->
+    <h6 class="map_owner"><%= 'Map Owner: ' + map.owner_name %></h6>
+    <h6 class="map_address"><%= 'City: ' + map.address %></h6>
+    <p class="map_description"><%= map.description %></p>
+  </main>
+
+  <footer>
+    <%- include('partials/_footer') %>
+  </footer>
+  <!-- Leaflet JS to render map -->
+  <script>
+    const lat = '<%= lat %>';
+    const lon = '<%= lng %>';
+    const map = L.map('mapCreate').setView([lat, lon], 13);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+    let markersToPlot = []
+    let i = 0
+    const markers = '<%- JSON.stringify(places) %>';
+    const parsedMarkers = JSON.parse(markers);
+    console.log(parsedMarkers)
+    for (const marker of parsedMarkers) {
+      const newMarker = new L.Marker([marker.latitude, marker.longitude]);
+      map.addLayer(newMarker);
+      if (!marker.photo_url && !marker.description) {
+        newMarker.bindPopup(`
+        <div>${marker.title}</div>
+        `)
+      } else if (!marker.photo_url) {
+        newMarker.bindPopup(`<div>${marker.title}</div><div>${marker.description}</div>`)
+      } else if (!marker.description) {
+        newMarker.bindPopup(`
+        <img src=${marker.photo_url} alt='popupText'>
+        <div>${marker.title}</div>
+        `)
+      } else {
+        newMarker.bindPopup(`
+        <img src=${marker.photo_url} alt='popupText' style='justify-content: center;'>
+        <div>${marker.title}</div><div>${marker.description}</div>
+        `)
+      }
+      
+    }
+  </script>
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
