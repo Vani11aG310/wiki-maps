@@ -31,19 +31,19 @@
 - ~~Favourite Maps~~
 - ~~Save Places~~
 - ~~Add a Map~~
-- Display places on a Map
+- ~~Display places on a Map~~
 - ~~EJS file cleanup~~
-- Map Details
-  - If logged in, user can favourite map
-  - If logged in and owns map, use can edit
-- Favourite Map functionality
-- Beautifcation of the app
+- ~~Map Details~~
+  - ~~If logged in, user can favourite map~~
+  - ~~If logged in and owns map, use can edit~~
+- ~~Favourite Map functionality~~
+- ~~Beautifcation of the app~~
 - ~~Toggle Logged In /Not Logged In User~~
 - Fit and Finish
   - Remove View Map button. Replace with hyperlink on Map Title and image.
   - Display Counter for number of maps (e.g. 1/30)
-  - Icons for Nav Footer bar
-  - Icon for "Add to Favourites"
+  - ~~Icons for Nav Footer bar~~
+  - ~~Icon for "Add to Favourites"~~
   - Improve editing/deleting places
 
 ## Thursday
@@ -51,4 +51,17 @@
 - Nice to Have Features
 
 ## Friday
-- DEMO
+- Mike
+  - Introduction
+  - non-Logged In User functions
+    - All Maps
+    - Map Details (no buttons)
+- Rod
+  - Logged in User functions
+    - My Maps
+    - My Favourites
+    - Map Details (existence of buttons)
+    - Add / Remove Favourites
+- Angelo
+  - Create a Map
+  - Add Places

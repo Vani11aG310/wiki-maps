@@ -22,15 +22,15 @@ VALUES
 (2, 'Toronto Entertainment', 'Toronto, Ontario', 'Entertainment venues in Toronto.', 'https://picsum.photos/id/28/1024/768'),
 (2, 'Quebec City Shopping', 'Quebec City, Quebec', 'Best shopping spots in Quebec City.', 'https://picsum.photos/id/29/1024/768'),
 
-(3, 'Edmonton Outdoors', 'Edmonton, Alberta', 'Outdoor activities in Edmonton.', 'https://picsum.photos/id/8/1024/768'),
-(3, 'Edmonton Dining', 'Edmonton, Alberta', 'Must-try restaurants in Edmonton.', 'https://picsum.photos/id/19/1024/768'),
-(3, 'Calgary Landmarks', 'Calgary, Alberta', 'Historical landmarks in Calgary.', 'https://picsum.photos/id/17/1024/768'),
-(3, 'Calgary Dining', 'Calgary, Alberta', 'Restaurants to try in Calgary.', 'https://picsum.photos/id/6/1024/768'),
-(3, 'Ottawa Sights', 'Ottawa, Ontario', 'Notable landmarks in Ottawa.', 'https://picsum.photos/id/5/1024/768'),
-(3, 'Winnipeg Arts', 'Winnipeg, Manitoba', 'Art museums and galleries in Winnipeg.', 'https://picsum.photos/id/10/1024/768'),
-(3, 'Victoria Gardens', 'Victoria, British Columbia', 'Scenic gardens in Victoria.', 'https://picsum.photos/id/15/1024/768'),
-(3, 'Toronto Shopping', 'Toronto, Ontario', 'Best shopping areas in Toronto.', 'https://picsum.photos/id/20/1024/768'),
-(3, 'Calgary Outdoors', 'Calgary, Alberta', 'Outdoor adventures in Calgary.', 'https://picsum.photos/id/25/1024/768'),
-(3, 'Edmonton Parks', 'Edmonton, Alberta', 'Parks to visit in Edmonton.', 'https://picsum.photos/id/30/1024/768');
+(3, 'St Johns Outdoors', 'St. Johns, Newfoundland', 'Outdoor activities in St. Johns.', 'https://picsum.photos/id/8/1024/768'),
+(3, 'Calgary Dining', 'Calgary, Alberta', 'Must-try restaurants in Calgary.', 'https://picsum.photos/id/19/1024/768'),
+(3, 'Toronto Landmarks', 'Toronto, Ontario', 'Historical landmarks in Toronto.', 'https://picsum.photos/id/17/1024/768'),
+(3, 'Vancouver Dining', 'Vancouver, British Columnbia', 'Restaurants to try in Vancouver.', 'https://picsum.photos/id/6/1024/768'),
+(3, 'Whistler Sights', 'Whistler, British Columnbia', 'Notable landmarks in Whistler.', 'https://picsum.photos/id/5/1024/768'),
+(3, 'Banff Tourist Sites', 'Banff, Alberta', 'Scenic sites in Banff.', 'https://picsum.photos/id/10/1024/768'),
+(3, 'Jasper Tourist Sites', 'Jasper, Alberta', 'Scenic sites in Jasper.', 'https://picsum.photos/id/15/1024/768'),
+(3, 'Okanagan Vineyards', 'Kelowna, British Columnbia', 'Best shopping areas in the Okanagan.', 'https://picsum.photos/id/20/1024/768'),
+(3, 'Cape Breton Outdoors', 'Cape Breton, Novia Scotia', 'Outdoor adventures in Cape Breton.', 'https://picsum.photos/id/25/1024/768'),
+(3, 'Calgary Parks', 'Calgary, Alberta', 'Parks to visit in Calgary.', 'https://picsum.photos/id/30/1024/768');
 
 
