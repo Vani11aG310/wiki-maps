@@ -47,8 +47,7 @@
   - Improve editing/deleting places
 
 ## Thursday
-- Practice Demo
-- Nice to Have Features
+- ~~Build. Build. Build.~~
 
 ## Friday
 - Mike
