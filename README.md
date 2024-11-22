@@ -36,3 +36,10 @@ Welcome to Wiki Maps, a map building app for users to build maps of their favour
 - Node 10.x or above
 - NPM 5.x or above
 - PG 6.x
+
+## Screen Prints
+
+!["Homepage"](https://github.com/Vani11aG310/wiki-maps/blob/development/docs/homepage.png?raw=true)
+!["Map Page"](https://github.com/Vani11aG310/wiki-maps/blob/development/docs/map_page.png?raw=true)
+!["Create Map Page"](https://github.com/Vani11aG310/wiki-maps/blob/development/docs/create_map.png?raw=true)
+!
