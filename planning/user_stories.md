@@ -8,14 +8,14 @@
     - Non-logged in Map
 5. As a non-authenticated user, I can see the details of each point of interest, because I want to determine if it is interesting to me.
     - Non-logged in Map
-6. As a non-authenticated user, I can see a registration button, because I want to be able to register for an account.
-    - Home Page, Non-logged in Map
+
 
 ## Authenticated user stories
 
 6. As an authenticated user, I can create a map with points of interest, because I want to help other users find interesting places in the area.
     - Create Map Page 1-2
 8. As an authenticated user, I can modify a map (add, edit, remove points), because I want to be able to keep my maps up to date if things change in my area.
+    - FUTURE ENHANCEMENT
     - Own Map View, Create Map Page 1-2
 9. As an authenticated user, I can favourite a map, because I use it very often and want it to be readily available.
     - Logged in Map, Own Map View

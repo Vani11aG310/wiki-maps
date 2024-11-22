@@ -1,6 +1,6 @@
 INSERT INTO places (map_id, title, latitude, longitude, description, photo_url) VALUES
 (1, 'Terry Fox Statue', 48.409678, -123.368965, 'Bronze statue honoring Terry Fox.', 'https://picsum.photos/id/101/75/75'),
-(1, 'Royal BC Museum', 48.4233, -123.3656, 'Museum showcasing British Columbia''s history.', 'https://picsum.photos/id/102/75/75'),
+(1, 'Royal BC Museum', 48.4233, -123.3656, 'Museum showcasing British Columbias history.', 'https://picsum.photos/id/102/75/75'),
 (1, 'Beacon Hill Park', 48.4146, -123.3656, 'Large park with gardens and trails.', 'https://picsum.photos/id/103/75/75'),
 (1, 'Inner Harbour', 48.4235, -123.3656, 'Scenic harbor with shops and restaurants.', 'https://picsum.photos/id/104/75/75'),
 
@@ -17,7 +17,7 @@ INSERT INTO places (map_id, title, latitude, longitude, description, photo_url) 
 (4, 'Calgary Tower', 51.0447, -114.0719, 'Observation tower with city views.', 'https://picsum.photos/id/113/75/75'),
 (4, 'Heritage Park', 50.9945, -114.0719, 'Historical village and park.', 'https://picsum.photos/id/114/75/75'),
 (4, 'Calgary Zoo', 51.0447, -114.0630, 'Zoo with diverse animal exhibits.', 'https://picsum.photos/id/115/75/75'),
-(4, 'Prince''s Island Park', 51.0670, -114.0719, 'Urban park with trails and events.', 'https://picsum.photos/id/116/75/75'),
+(4, 'Princes Island Park', 51.0670, -114.0719, 'Urban park with trails and events.', 'https://picsum.photos/id/116/75/75'),
 
 (5, 'Old Port', 45.5017, -73.5540, 'Historic port area with shops and cafes.', 'https://picsum.photos/id/117/75/75'),
 (5, 'Montreal Museum of Fine Arts', 45.5015, -73.5772, 'Museum with extensive art collections.', 'https://picsum.photos/id/118/75/75'),
@@ -30,7 +30,7 @@ INSERT INTO places (map_id, title, latitude, longitude, description, photo_url) 
 (6, 'National Gallery of Canada', 45.4290, -75.7100, 'Art museum with Canadian and international art.', 'https://picsum.photos/id/124/75/75'),
 
 (7, 'Halifax Citadel', 44.6488, -63.5752, 'Historic fort with great views of the city.', 'https://picsum.photos/id/125/75/75'),
-(7, 'Peggy''s Cove', 44.4911, -63.9152, 'Famous lighthouse and scenic views.', 'https://picsum.photos/id/126/75/75'),
+(7, 'Peggys Cove', 44.4911, -63.9152, 'Famous lighthouse and scenic views.', 'https://picsum.photos/id/126/75/75'),
 (7, 'Maritime Museum', 44.6450, -63.5705, 'Museum showcasing maritime history.', 'https://picsum.photos/id/127/75/75'),
 (7, 'Point Pleasant Park', 44.6440, -63.5700, 'Large park with trails and ocean views.', 'https://picsum.photos/id/128/75/75'),
 
@@ -50,14 +50,14 @@ INSERT INTO places (map_id, title, latitude, longitude, description, photo_url) 
 (10, 'Quidi Vidi Village', 47.5615, -52.7060, 'Charming fishing village with shops.', 'https://picsum.photos/id/140/75/75'),
 
 (11, 'Wascana Centre', 50.4454, -104.6180, 'Large park with a lake and trails.', 'https://picsum.photos/id/141/75/75'),
-(11, 'Royal Saskatchewan Museum', 50.4454, -104.6170, 'Museum showcasing Saskatchewan''s natural history.', 'https://picsum.photos/id/142/75/75'),
+(11, 'Royal Saskatchewan Museum', 50.4454, -104.6170, 'Museum showcasing Saskatchewans natural history.', 'https://picsum.photos/id/142/75/75'),
 (11, 'Saskatchewan Legislative Building', 50.4454, -104.6170, 'Historic government building.', 'https://picsum.photos/id/143/75/75'),
 (11, 'MacKenzie Art Gallery', 50.4454, -104.6170, 'Art gallery with Canadian and international art.', 'https://picsum.photos/id/144/75/75'),
 
 (12, 'Meewasin Valley', 52.1134, -106.6340, 'Scenic valley with trails and parks.', 'https://picsum.photos/id/145/75/75'),
 (12, 'Wanuskewin Heritage Park', 52.1575, -106.6460, 'Cultural site showcasing Indigenous history.', 'https://picsum.photos/id/146/75/75'),
 (12, 'Saskatoon Forestry Farm', 52.1165, -106.6460, 'Historic farm with gardens and animals.', 'https://picsum.photos/id/147/75/75'),
-(12, 'Nutrien Wonderhub', 52.1165, -106.6340, 'Interactive children''s museum.', 'https://picsum.photos/id/148/75/75'),
+(12, 'Nutrien Wonderhub', 52.1165, -106.6340, 'Interactive childrens museum.', 'https://picsum.photos/id/148/75/75'),
 
 (13, 'Banff National Park', 51.4968, -115.9281, 'Stunning national park with mountains.', 'https://picsum.photos/id/149/75/75'),
 (13, 'Lake Louise', 51.4254, -116.1772, 'Famous glacial lake with hiking trails.', 'https://picsum.photos/id/150/75/75'),
@@ -99,12 +99,12 @@ INSERT INTO places (map_id, title, latitude, longitude, description, photo_url) 
 (20, 'Alexander Graham Bell Museum', 46.1000, -60.2000, 'Museum dedicated to the inventor.', 'https://picsum.photos/id/179/75/75'),
 (20, 'Baddeck', 46.1000, -60.7000, 'Charming village on the lake.', 'https://picsum.photos/id/180/75/75'),
 
-(21, 'St. John''s Signal Hill', 47.5615, -52.7072, 'Historic site with panoramic views.', 'https://picsum.photos/id/181/75/75'),
+(21, 'St. Johns Signal Hill', 47.5615, -52.7072, 'Historic site with panoramic views.', 'https://picsum.photos/id/181/75/75'),
 (21, 'Cape Spear', 47.5230, -52.6230, 'Easternmost point in North America.', 'https://picsum.photos/id/182/75/75'),
 (21, 'The Rooms', 47.5615, -52.7125, 'Museum showcasing Newfoundland history.', 'https://picsum.photos/id/183/75/75'),
 (21, 'Quidi Vidi Village', 47.5615, -52.7060, 'Charming fishing village with shops.', 'https://picsum.photos/id/184/75/75'),
 
-(22, 'Glenbow Museum', 51.0447, -114.0719, 'Museum showcasing Alberta''s history.', 'https://picsum.photos/id/185/75/75'),
+(22, 'Glenbow Museum', 51.0447, -114.0719, 'Museum showcasing Albertas history.', 'https://picsum.photos/id/185/75/75'),
 (22, 'Calgary Stampede', 51.0447, -114.0719, 'Famous rodeo and exhibition.', 'https://picsum.photos/id/186/75/75'),
 (22, 'Fish Creek Provincial Park', 50.9050, -114.0719, 'Large urban park with trails.', 'https://picsum.photos/id/187/75/75'),
 (22, 'Heritage Park Historical Village', 50.9945, -114.0719, 'Living history museum.', 'https://picsum.photos/id/188/75/75'),
@@ -144,7 +144,7 @@ INSERT INTO places (map_id, title, latitude, longitude, description, photo_url) 
 (29, 'Alexander Graham Bell Museum', 46.1000, -60.2000, 'Museum dedicated to the inventor.', 'https://picsum.photos/id/216/75/75'),
 (29, 'Baddeck', 46.1000, -60.7000, 'Charming village on the lake.', 'https://picsum.photos/id/217/75/75'),
 
-(30, 'Glenbow Museum', 51.0447, -114.0719, 'Museum showcasing Alberta''s history.', 'https://picsum.photos/id/218/75/75'),
+(30, 'Glenbow Museum', 51.0447, -114.0719, 'Museum showcasing Albertas history.', 'https://picsum.photos/id/218/75/75'),
 (30, 'Calgary Stampede', 51.0447, -114.0719, 'Famous rodeo and exhibition.', 'https://picsum.photos/id/219/75/75'),
 (30, 'Fish Creek Provincial Park', 50.9050, -114.0719, 'Large urban park with trails.', 'https://picsum.photos/id/220/75/75'),
 (30, 'Heritage Park Historical Village', 50.9945, -114.0719, 'Living history museum.', 'https://picsum.photos/id/221/75/75');
