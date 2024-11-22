@@ -70,6 +70,13 @@ router.get('/:id', (req, res) => {
         .json({ error: err.message });
     });
 });
+router.get('/:id/update', (req, res) => {
+  res.cookie('map_id', req.params.id)
+  const templateVars = {
+    user: req.cookies.user_id
+  }
+  res.render('maps', templateVars)
+});
 
 
 router.post('/', (req, res) => {
@@ -97,8 +104,8 @@ router.post('/', (req, res) => {
     })
     .catch(err => {
       res
-        .status(500)
-        .json({ error: err.message });
+      .status(500)
+      .json({ error: err.message });
     });
 });
 
@@ -138,19 +145,5 @@ router.post('/', (req, res) => {
 //     });
 // });
 
-// router.post('/:id', (req, res) => {
-//   const map = req.body;
-//   map.id = req.params.id
-
-//   mapQueries.updateMap(map)
-//     .then(map => {
-//       res.json({ map });
-//     })
-//     .catch(err => {
-//       res
-//         .status(500)
-//         .json({ error: err.message });
-//     });
-// });
 
 module.exports = router;

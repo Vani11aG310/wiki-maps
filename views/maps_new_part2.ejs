@@ -11,9 +11,13 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
      crossorigin=""></script>
+     <link rel="stylesheet" href="/styles/layout.css" />
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Create a new map!</title>
 </head>
 <body>
@@ -27,7 +31,7 @@
       <input type="text" id="places_input" name="placesObject" hidden="true">
       <button type="submit" class="btn btn-outline-secondary">Submit Map</button>
     </form>
-    
+
   </main>
   <footer>
     <%- include('partials/_footer') %>
@@ -37,7 +41,7 @@
   <script>
     const lat = '<%= lat %>';
     const lon = '<%= long %>';
-    const map = L.map('mapCreate').setView([lat, lon], 18);
+    const map = L.map('mapCreate').setView([lat, lon], 13);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -68,7 +72,7 @@
           markerObject.lat = tempMarker.getLatLng().lat;
           markerObject.lng = tempMarker.getLatLng().lng;
           markers.push(markerObject);
-          console.log(markers);  
+          console.log(markers);
         }
       })
       $('.delete-marker-button:visible').click(function () {
