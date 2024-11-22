@@ -1,15 +1,15 @@
 INSERT INTO maps (user_id, title, address, description, photo_url)
 VALUES
-(1, 'St. Johns Landmarks', 'St. Johns, Newfoundland', 'Favorite spots in St. Johns.', 'https://picsum.photos/id/1/1024/768'),
-(1, 'Toronto Restaurants', 'Toronto, Ontario', 'Best dining spots in Vancouver.', 'https://picsum.photos/id/2/1024/768'),
-(1, 'Vancouver Culture', 'Vancouver, British Columbia', 'Cultural landmarks in Quebec City.', 'https://picsum.photos/id/7/1024/768'),
-(1, 'Montreal Nightlife', 'Montreal, Quebec', 'Best nightlife spots in Montreal.', 'https://picsum.photos/id/11/1024/768'),
-(1, 'Montreal Parks', 'Montreal, Quebec', 'Green spaces in Toronto.', 'https://picsum.photos/id/12/1024/768'),
+(1, 'Victoria', 'Victoria, British Columbia', 'Favorite spots in Victoria.', 'https://picsum.photos/id/1/1024/768'),
+(1, 'Toronto Restaurants', 'Toronto, Ontario', 'Best dining spots in Toronto.', 'https://picsum.photos/id/2/1024/768'),
+(1, 'Vancouver Culture', 'Vancouver, British Columbia', 'Cultural landmarks in Vancouver.', 'https://picsum.photos/id/7/1024/768'),
+(1, 'Calgary Nightlife', 'Calgary, Alberta', 'Best nightlife spots in Alberta.', 'https://picsum.photos/id/11/1024/768'),
+(1, 'Montreal Parks', 'Montreal, Quebec', 'Green spaces in Montreal.', 'https://picsum.photos/id/12/1024/768'),
 (1, 'Ottawa Museums', 'Ottawa, Ontario', 'Museums to visit in Ottawa.', 'https://picsum.photos/id/16/1024/768'),
-(1, 'Winnipeg Parks', 'Winnipeg, Manitoba', 'Parks and green spaces in Winnipeg.', 'https://picsum.photos/id/21/1024/768'),
-(1, 'Quebec Waterfalls', 'Quebec City, Quebec', 'Waterfalls to see near Vancouver.', 'https://picsum.photos/id/22/1024/768'),
+(1, 'Halifax Parks', 'Halifax, Nova Scotia', 'Parks and green spaces in Winnipeg.', 'https://picsum.photos/id/21/1024/768'),
+(1, 'Quebec Waterfalls', 'Quebec City, Quebec', 'Waterfalls to see near Quebec City.', 'https://picsum.photos/id/22/1024/768'),
 (1, 'Winnipeg Food', 'Winnipeg, Manitoba', 'Best food in Winnipeg.', 'https://picsum.photos/id/26/1024/768'),
-(1, 'Vancouver History', 'Vancouver, British Columbia', 'Historical sites in Vancouver.', 'https://picsum.photos/id/27/1024/768'),
+(1, 'St. Johns History', 'St. Johns, Newfoundland', 'Historical sites in St. Johns.', 'https://picsum.photos/id/27/1024/768'),
 
 (2, 'Regina Attractions', 'Regina, Saskatchewan', 'Popular attractions in Regina.', 'https://picsum.photos/id/3/1024/768'),
 (2, 'Nutanna Adventures', 'Nutanna, Saskatchewan', 'Fun things to do in Nutanna.', 'https://picsum.photos/id/4/1024/768'),
