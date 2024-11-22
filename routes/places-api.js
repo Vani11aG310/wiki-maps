@@ -59,33 +59,20 @@ router.post('/', (req, res) => {
     placeQueries.addPlace(place)
       .then(() => {
         console.log('place submitted');
+
       })
       .catch(err => {
         res
-          .status(500)
-          .json({ error: err.message });
+        .status(500)
+        .json({ error: err.message });
       });
-  }
-  
-  mapQueries.getMapById(req.cookies.map_id)
-    .then(map => {
-      templateVars.map = map;
-      const address = map.address;
-      const geocodeAPIURL = 'https://singlesearch.alk.com/NA/api/search?';
-      const options = {
-        authToken: process.env.GEOCODE_API,
-        query: address
-      }
-      needle.request('get', geocodeAPIURL, options, (request, response) => {
-        templateVars.lat = response.body.Locations[0].Coords.Lat;
-        templateVars.lng = response.body.Locations[0].Coords.Lon;
-        mapQueries.getPlacesByMap(req.cookies.map_id)
-          .then(places => {
-            templateVars.places = places;
-            res.render('map', templateVars);
-          })
-      })
-    })
+    }
+
+    // Route to /maps/:map_id
+    const mapId = req.cookies.map_id
+    console.log('Routing to maps after saving places', mapId);
+    res.redirect(`/maps/${mapId}`);
+
 });
 
 router.post('/:id/delete', (req, res) => {
