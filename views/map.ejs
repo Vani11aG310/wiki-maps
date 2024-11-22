@@ -84,14 +84,14 @@
       map.addLayer(newMarker);
       if (!marker.photo_url && !marker.description) {
         newMarker.bindPopup(`
-        <span>${marker.title}</span>
+        <div>${marker.title}</div>
         `)
       } else if (!marker.photo_url) {
-        newMarker.bindPopup(`<span>${marker.title}</span><span>${marker.description}</span>`)
+        newMarker.bindPopup(`<div>${marker.title}</div><div>${marker.description}</div>`)
       } else if (!marker.description) {
         newMarker.bindPopup(`
         <img src=${marker.photo_url} alt='popupText'>
-        <span>${marker.title}</span>
+        <div>${marker.title}</div>
         `)
       } else {
         newMarker.bindPopup(`

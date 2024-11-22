@@ -54,7 +54,9 @@ router.post('/', (req, res) => {
       map_id: req.cookies.map_id,
       title: parsedBody[i].title,
       latitude: parsedBody[i].lat,
-      longitude: parsedBody[i].lng
+      longitude: parsedBody[i].lng,
+      description: parsedBody[i].description,
+      photo_url: parsedBody[i].photo_url
     }
     placeQueries.addPlace(place)
       .then(() => {

@@ -48,11 +48,18 @@
     }).addTo(map);
     let markers = [];
     let markerTitle;
+    let markerDescription;
+    let markerImage;
     function onMapClick(e) {
-      const marker = new L.Marker(e.latlng, {draggable:true});
+      const marker = new L.Marker(e.latlng);
       map.addLayer(marker);
       console.log(markers)
-      marker.bindPopup("<div><input type='text' value='Enter a description' class='description-box'/></div><div><input type=button value='Delete this marker' class='delete-marker-button' /></div>");
+      marker.bindPopup(`
+      <div><input type='text' value='Enter a title' class='title-box'/></div>
+      <div><input type='text' value='Enter a description' class='description-box'/></div>
+      <div><input type='text' value='Enter a photo url' class='photo-box'/></div>
+      <div><input type=button value='Delete this marker' class='delete-marker-button' /></div>`
+      );
       marker.on("popupopen", onPopupOpen);
       return marker;
     }
@@ -61,14 +68,36 @@
         title: null,
         lat: null,
         lng: null,
+        photo_url: null,
+        description: null
       };
       const tempMarker = this;
-      $(".description-box").keypress(function (e) {
+      $(".title-box").keypress(function (e) {
+        markerImage = $(".photo-box").val();
         let key = e.which;
         if (key === 13) {
-          tempMarker.setPopupContent(`<div id='title'>${$(".description-box").val()}</div><div><input type=button value='Delete this marker' class='delete-marker-button' /></div>`)
+          if (!$(".photo-box").val() && !$(".description-box").val()) {
+            tempMarker.bindPopup(`
+            <div id='title'>${$(".title-box").val()}</div>
+            `)
+          } else if (!$(".photo-box").val()) {
+            tempMarker.bindPopup(`<div id='title'>${$(".title-box").val()}</div><div id='description'>${$(".description-box").val()}</div>`)
+          } else if (!$(".description-box").val()) {
+            tempMarker.bindPopup(`
+            <div><img src=${$(".photo-box").val()} alt='popupText'></div>
+            <div id='title'>${$(".title-box").val()}</div>
+            `)
+          } else {
+            tempMarker.bindPopup(`
+            <div><img src=${$(".photo-box").val()} alt='popupText'></div>
+            <div id='title'>${$(".title-box").val()}</div><div id='description'>${$(".description-box").val()}</div>
+            `)
+          }
           markerTitle = $('#title').text();
+          markerDescription = $('#description').text();
           markerObject.title = markerTitle;
+          markerObject.description = markerDescription;
+          markerObject.photo_url = markerImage;
           markerObject.lat = tempMarker.getLatLng().lat;
           markerObject.lng = tempMarker.getLatLng().lng;
           markers.push(markerObject);
