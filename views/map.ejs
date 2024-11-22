@@ -68,7 +68,7 @@
   <script>
     const lat = '<%= lat %>';
     const lon = '<%= lng %>';
-    const map = L.map('mapCreate').setView([lat, lon], 18);
+    const map = L.map('mapCreate').setView([lat, lon], 13);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -94,8 +94,8 @@
         `)
       } else {
         newMarker.bindPopup(`
-        <img src=${marker.photo_url} alt='popupText'>
-        <span>${marker.title}</span><span>${marker.description}</span>
+        <img src=${marker.photo_url} alt='popupText' style='justify-content: center;'>
+        <div>${marker.title}</div><div>${marker.description}</div>
         `)
       }
       
