@@ -13,7 +13,7 @@ Welcome to Wiki Maps, a map building app for users to build maps of their favour
   - password: `labber` 
   - database: `midterm`
   - user id: `1-3`
-  - Access geocode from `https://leafletjs.com/reference.html`
+  - Access geocode from `https://developer.trimblemaps.com/`
 3. Install dependencies: `npm i`
 4. Fix to binaries for sass: `npm rebuild node-sass`
 5. Reset database: `npm run db:reset`
@@ -42,4 +42,3 @@ Welcome to Wiki Maps, a map building app for users to build maps of their favour
 !["Homepage"](https://github.com/Vani11aG310/wiki-maps/blob/development/docs/homepage.png?raw=true)
 !["Map Page"](https://github.com/Vani11aG310/wiki-maps/blob/development/docs/map_page.png?raw=true)
 !["Create Map Page"](https://github.com/Vani11aG310/wiki-maps/blob/development/docs/create_map.png?raw=true)
-!
