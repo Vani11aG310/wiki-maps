@@ -46,7 +46,7 @@
         <button type="submit" class="btn btn-sm"><i class="fa-solid fa-star"></i><%= isFavouriteMap ? 'Remove from Favourites' : 'Add to Favourites' %> </button>     
       </form> 
       <% if (map.user_id === user) { %>
-      <form method="GET" action="/maps/new_part1">
+      <form method="GET" action="/maps/<%= map.id %>/update">
         <button type="submit" class="btn btn-sm"><i class="fa-solid fa-pencil"></i>Edit Map</button>
       </form> 
       <% } %> 

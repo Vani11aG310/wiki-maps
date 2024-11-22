@@ -70,13 +70,6 @@ router.get('/:id', (req, res) => {
         .json({ error: err.message });
     });
 });
-router.get('/:id/update', (req, res) => {
-  res.cookie('map_id', req.params.id)
-  const templateVars = {
-    user: req.cookies.user_id
-  }
-  res.render('maps', templateVars)
-});
 
 
 router.post('/', (req, res) => {
