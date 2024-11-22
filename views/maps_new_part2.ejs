@@ -79,18 +79,26 @@
           if (!$(".photo-box").val() && !$(".description-box").val()) {
             tempMarker.bindPopup(`
             <div id='title'>${$(".title-box").val()}</div>
+            <div><input type=button value='Delete this marker' class='delete-marker-button' /></div>
             `)
           } else if (!$(".photo-box").val()) {
-            tempMarker.bindPopup(`<div id='title'>${$(".title-box").val()}</div><div id='description'>${$(".description-box").val()}</div>`)
+            tempMarker.bindPopup(`
+            <div id='title'>${$(".title-box").val()}</div>
+            <div id='description'>${$(".description-box").val()}</div>
+            <div><input type=button value='Delete this marker' class='delete-marker-button' /></div>
+            `)
           } else if (!$(".description-box").val()) {
             tempMarker.bindPopup(`
             <div><img src=${$(".photo-box").val()} alt='popupText'></div>
             <div id='title'>${$(".title-box").val()}</div>
+            <div><input type=button value='Delete this marker' class='delete-marker-button' /></div>
             `)
           } else {
             tempMarker.bindPopup(`
             <div><img src=${$(".photo-box").val()} alt='popupText'></div>
-            <div id='title'>${$(".title-box").val()}</div><div id='description'>${$(".description-box").val()}</div>
+            <div id='title'>${$(".title-box").val()}</div>
+            <div id='description'>${$(".description-box").val()}</div>
+            <div><input type=button value='Delete this marker' class='delete-marker-button' /></div>
             `)
           }
           markerTitle = $('#title').text();
